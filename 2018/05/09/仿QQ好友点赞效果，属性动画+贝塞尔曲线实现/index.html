@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/W9ZWXS3.gif">
 <meta property="og:image" content="https://i.imgur.com/H7VcD4f.png">
-<meta property="og:updated_time" content="2018-05-10T03:14:01.832Z">
+<meta property="og:updated_time" content="2018-05-10T03:18:48.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="仿QQ好友点赞效果，属性动画+贝塞尔曲线实现">
 <meta name="twitter:description" content="前言属性动画 和 贝赛尔曲线 已经出来很久了，很多前辈写了很多不错的文章，在此不得不感谢这些前辈无私奉献的开源精神，能让我们站在巨人的肩膀上望得更远.如果你对属性动画还不太了解可以看看郭林的文章，贝塞尔曲线的使用可以参考Lin_Zero 效果图 实现思路整体实现思路还是比较简单的，首先要有一个容器来装点出来的赞，然后通过属性动画对赞加一些动画效果，最后通过贝塞尔曲线使其做不规则的运动。 代码实现好">
@@ -185,97 +185,10 @@ var _hmt = _hmt || [];
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>属性动画</code> 和 <code>贝赛尔曲线</code> 已经出来很久了，很多前辈写了很多不错的文章，在此不得不感谢这些前辈无私奉献的开源精神，能让我们站在巨人的肩膀上望得更远.如果你对属性动画还不太了解可以看看<a href="http://blog.csdn.net/guolin_blog/article/details/43536355" target="_blank" rel="noopener">郭林</a>的文章，贝塞尔曲线的使用可以参考<a href="https://blog.csdn.net/z82367825/article/details/51599245" target="_blank" rel="noopener">Lin_Zero</a></p>
 <h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://i.imgur.com/W9ZWXS3.gif" alt=""></p>
 <h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>整体实现思路还是比较简单的，首先要有一个容器来装点出来的赞，然后通过属性动画对赞加一些动画效果，最后通过贝塞尔曲线使其做不规则的运动。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>好了，思路有了，咱们也废话不多说，直接上代码，首先是所有动画的实现</p>
-<p><pre><code><br>    /**</code></pre></p>
-<pre><code> *  实现点赞效果 平移 缩放 渐变
- * @param imageView
- * @return 所有动画的集合
- */
-private AnimatorSet getAnimator(final ImageView imageView) {
-
-    //缩放
-    ObjectAnimator scaleX = ObjectAnimator.ofFloat(imageView,&quot;scaleX&quot;,0.4f,1f);
-    ObjectAnimator scaleY = ObjectAnimator.ofFloat(imageView,&quot;scaleY&quot;,0.4f,1f);
-    //alpha
-    ObjectAnimator alpha = ObjectAnimator.ofFloat(imageView,&quot;alpha&quot;,0.4f,1f);
-
-    //执行三个动画
-    AnimatorSet enterSet = new AnimatorSet();
-    enterSet.setDuration(500);
-    enterSet.playTogether(scaleX,scaleY,alpha);
-
-    //用贝塞尔曲线控制点赞的走向
-    ValueAnimator bezierAnimator = getBezierAnimator(imageView);
-
-    //综合所有动画
-    AnimatorSet set = new AnimatorSet();
-    //按顺序执行
-    set.playSequentially(enterSet,bezierAnimator);
-    //添加插值器
-    set.setInterpolator(interpolators[random.nextInt(3)]);
-    set.setTarget(imageView);
-
-    set.addListener(new AnimatorListenerAdapter() {
-        @Override
-        public void onAnimationEnd(Animator animation) {
-            super.onAnimationEnd(animation);
-            removeView(imageView);
-        }
-    });
-    return set;
-}
-</code></pre><p><br>然后是通过贝塞尔曲线对赞的走向做了控制，代码如下</p>
-<p><pre><code><br>    /**</code></pre></p>
-<pre><code> * 通过贝塞尔曲线对赞走向做控制
- * @param imageView
- * @return
- */
-private ValueAnimator getBezierAnimator(final ImageView imageView) {
-
-    //准备控制贝塞尔曲线的四个点（起始点p0,拐点p1,拐点p2,终点p3）
-    PointF pointF0 = new PointF((mWidth-dWidth)/2,mHeight-dHeight);
-    PointF pointF1 = getTogglePointF(1);
-    PointF pointF2 = getTogglePointF(2);
-    PointF pointF3 = new PointF(random.nextInt(mWidth),0);
-    BezierEvaluator bezierEvaluator = new BezierEvaluator(pointF1,pointF2);
-
-    final ValueAnimator animator = ValueAnimator.ofObject(bezierEvaluator,pointF0,pointF3);
-    animator.setDuration(3000);
-    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-        @Override
-        public void onAnimationUpdate(ValueAnimator valueAnimator) {
-            PointF pointF = (PointF) valueAnimator.getAnimatedValue();
-            //控制属性变化
-            imageView.setX(pointF.x);
-            imageView.setY(pointF.y);
-            imageView.setAlpha(1 - valueAnimator.getAnimatedFraction());//从可见到不可见
-        }
-    });
-
-    return animator;
-}
-</code></pre><p><br>这是估值器的实现</p>
-<p><pre><code><br>/**</code></pre></p>
-<ul>
-<li>创建时间: 2018/5/10<br>*</li>
-<li>@author Liuzj</li>
-<li><p>功能描述: 贝塞尔曲线估值器<br>*/<br>public class BezierEvaluator implements TypeEvaluator<pointf> {<br> /**</pointf></p>
-<ul>
-<li><p>拐点<br>*/<br>private PointF pointF1;<br>private PointF pointF2;</p>
-<p>public BezierEvaluator(PointF pointF1,PointF pointF2) {<br> this.pointF1 = pointF1;<br> this.pointF2 = pointF2;<br>}</p>
-<p>@Override<br>public PointF evaluate(float v, PointF pointF, PointF t1) {<br> PointF point = new PointF();<br> point.x = pointF.x<em>(1-v)</em>(1-v)*(1-v)</p>
-<pre><code>+3*pointF1.x*v*(1-v)* (1-v)
-+3*pointF2.x*v*v*(1-v)
-+t1.x*v*v*v;
-</code></pre><p> point.y = pointF.y<em>(1-v)</em>(1-v)*(1-v)</p>
-<pre><code>+3*pointF1.y*v*(1-v)* (1-v)
-+3*pointF2.y*v*v*(1-v)
-+t1.y*v*v*v;
-</code></pre><p> return point;<br>}<br>}<br><br>可能有的朋友对<code>evaluate</code>方法里的实现有所疑惑，其实调用贝塞尔的三阶公式,然后把点跟公式里的对应上就ok了<br><img src="https://i.imgur.com/H7VcD4f.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>好了，思路有了，咱们也废话不多说，直接上代码，首先是所有动画的实现<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  实现点赞效果 平移 缩放 渐变</span></span><br><span class="line"><span class="comment"> * @param imageView</span></span><br><span class="line"><span class="comment"> * @return 所有动画的集合</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> AnimatorSet getAnimator(<span class="keyword">final</span> ImageView imageView) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//缩放</span></span><br><span class="line">    ObjectAnimator scaleX = ObjectAnimator.ofFloat(imageView,<span class="string">"scaleX"</span>,<span class="number">0.4</span>f,<span class="number">1</span>f);</span><br><span class="line">    ObjectAnimator scaleY = ObjectAnimator.ofFloat(imageView,<span class="string">"scaleY"</span>,<span class="number">0.4</span>f,<span class="number">1</span>f);</span><br><span class="line">    <span class="comment">//alpha</span></span><br><span class="line">    ObjectAnimator <span class="built_in">alpha</span> = ObjectAnimator.ofFloat(imageView,<span class="string">"alpha"</span>,<span class="number">0.4</span>f,<span class="number">1</span>f);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//执行三个动画</span></span><br><span class="line">    AnimatorSet enterSet = <span class="keyword">new</span> AnimatorSet();</span><br><span class="line">    enterSet.setDuration(<span class="number">500</span>);</span><br><span class="line">    enterSet.playTogether(scaleX,scaleY,<span class="built_in">alpha</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用贝塞尔曲线控制点赞的走向</span></span><br><span class="line">    ValueAnimator bezierAnimator = getBezierAnimator(imageView);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//综合所有动画</span></span><br><span class="line">    AnimatorSet <span class="built_in">set</span> = <span class="keyword">new</span> AnimatorSet();</span><br><span class="line">    <span class="comment">//按顺序执行</span></span><br><span class="line">    <span class="built_in">set</span>.playSequentially(enterSet,bezierAnimator);</span><br><span class="line">    <span class="comment">//添加插值器</span></span><br><span class="line">    <span class="built_in">set</span>.setInterpolator(interpolators[<span class="built_in">random</span>.nextInt(<span class="number">3</span>)]);</span><br><span class="line">    <span class="built_in">set</span>.setTarget(imageView);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">set</span>.addListener(<span class="keyword">new</span> AnimatorListenerAdapter() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> onAnimationEnd(Animator animation) &#123;</span><br><span class="line">            <span class="keyword">super</span>.onAnimationEnd(animation);</span><br><span class="line">            removeView(imageView);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">set</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后是通过贝塞尔曲线对赞的走向做了控制，代码如下<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过贝塞尔曲线对赞走向做控制</span></span><br><span class="line"><span class="comment"> * @param imageView</span></span><br><span class="line"><span class="comment"> * @return</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">private <span class="type">ValueAnimator</span> getBezierAnimator(final <span class="type">ImageView</span> imageView) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//准备控制贝塞尔曲线的四个点（起始点p0,拐点p1,拐点p2,终点p3）</span></span><br><span class="line">    <span class="type">PointF</span> pointF0 = <span class="function"><span class="keyword">new</span> <span class="title">PointF</span>((mWidth-dWidth)/2,<span class="title">mHeight</span>-<span class="title">dHeight</span>);</span></span><br><span class="line"><span class="function">    <span class="title">PointF</span> <span class="title">pointF1</span> = <span class="title">getTogglePointF</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="function">    <span class="title">PointF</span> <span class="title">pointF2</span> = <span class="title">getTogglePointF</span>(<span class="number">2</span>);</span></span><br><span class="line"><span class="function">    <span class="title">PointF</span> <span class="title">pointF3</span> = <span class="title">new</span> <span class="title">PointF</span>(random.nextInt(mWidth),0);</span></span><br><span class="line"><span class="function">    <span class="title">BezierEvaluator</span> <span class="title">bezierEvaluator</span> = <span class="title">new</span> <span class="title">BezierEvaluator</span>(pointF1,pointF2);</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="title">final</span> <span class="title">ValueAnimator</span> <span class="title">animator</span> = <span class="title">ValueAnimator</span>.<span class="title">ofObject</span>(bezierEvaluator,pointF0,pointF3);</span></span><br><span class="line"><span class="function">    <span class="title">animator</span>.<span class="title">setDuration</span>(<span class="number">3000</span>);</span></span><br><span class="line"><span class="function">    <span class="title">animator</span>.<span class="title">addUpdateListener</span>(new <span class="type">ValueAnimator</span>.<span class="type">AnimatorUpdateListener</span>() &#123;</span></span><br><span class="line"><span class="function">        @<span class="title">Override</span></span></span><br><span class="line"><span class="function">        <span class="title">public</span> <span class="title">void</span> <span class="title">onAnimationUpdate</span>(<span class="type">ValueAnimator</span> valueAnimator) &#123;</span></span><br><span class="line"><span class="function">            <span class="title">PointF</span> <span class="title">pointF</span> = (<span class="type">PointF</span>) <span class="title">valueAnimator</span>.<span class="title">getAnimatedValue</span>();</span></span><br><span class="line"><span class="function">            <span class="comment">//控制属性变化</span></span></span><br><span class="line"><span class="function">            <span class="title">imageView</span>.<span class="title">setX</span>(pointF.x);</span></span><br><span class="line"><span class="function">            <span class="title">imageView</span>.<span class="title">setY</span>(pointF.y);</span></span><br><span class="line"><span class="function">            <span class="title">imageView</span>.<span class="title">setAlpha</span>(<span class="number">1</span> - valueAnimator.getAnimatedFraction());<span class="comment">//从可见到不可见</span></span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;);</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="title">return</span> <span class="title">animator</span>;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这是估值器的实现<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建时间: 2018/5/10</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @author Liuzj</span></span><br><span class="line"><span class="comment"> * 功能描述: 贝塞尔曲线估值器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">BezierEvaluator</span> <span class="title">implements</span> <span class="title">TypeEvaluator</span>&lt;<span class="title">PointF</span>&gt; &#123;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 拐点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    private <span class="type">PointF</span> pointF1;</span><br><span class="line">    private <span class="type">PointF</span> pointF2;</span><br><span class="line"></span><br><span class="line">    public <span class="type">BezierEvaluator</span>(<span class="type">PointF</span> pointF1,<span class="type">PointF</span> pointF2) &#123;</span><br><span class="line">        <span class="literal">this</span>.pointF1 = pointF1;</span><br><span class="line">        <span class="literal">this</span>.pointF2 = pointF2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="type">Override</span></span><br><span class="line">    public <span class="type">PointF</span> evaluate(float v, <span class="type">PointF</span> pointF, <span class="type">PointF</span> t1) &#123;</span><br><span class="line">        <span class="type">PointF</span> point = <span class="function"><span class="keyword">new</span> <span class="title">PointF</span>();</span></span><br><span class="line"><span class="function">        <span class="title">point</span>.<span class="title">x</span> = <span class="title">pointF</span>.<span class="title">x</span>*(<span class="number">1</span>-v)*(<span class="number">1</span>-v)*(<span class="number">1</span>-v)</span></span><br><span class="line"><span class="function">                +3*<span class="title">pointF1</span>.<span class="title">x</span>*<span class="title">v</span>*(<span class="number">1</span>-v)* (<span class="number">1</span>-v)</span></span><br><span class="line"><span class="function">                +3*<span class="title">pointF2</span>.<span class="title">x</span>*<span class="title">v</span>*<span class="title">v</span>*(<span class="number">1</span>-v)</span></span><br><span class="line"><span class="function">                +<span class="title">t1</span>.<span class="title">x</span>*<span class="title">v</span>*<span class="title">v</span>*<span class="title">v</span>;</span></span><br><span class="line"><span class="function">        <span class="title">point</span>.<span class="title">y</span> = <span class="title">pointF</span>.<span class="title">y</span>*(<span class="number">1</span>-v)*(<span class="number">1</span>-v)*(<span class="number">1</span>-v)</span></span><br><span class="line"><span class="function">                +3*<span class="title">pointF1</span>.<span class="title">y</span>*<span class="title">v</span>*(<span class="number">1</span>-v)* (<span class="number">1</span>-v)</span></span><br><span class="line"><span class="function">                +3*<span class="title">pointF2</span>.<span class="title">y</span>*<span class="title">v</span>*<span class="title">v</span>*(<span class="number">1</span>-v)</span></span><br><span class="line"><span class="function">                +<span class="title">t1</span>.<span class="title">y</span>*<span class="title">v</span>*<span class="title">v</span>*<span class="title">v</span>;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">        <span class="title">return</span> <span class="title">point</span>;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>可能有的朋友对<code>evaluate</code>方法里的实现有所疑惑，其实调用贝塞尔的三阶公式,然后把点跟公式里的对应上就ok了<br><img src="https://i.imgur.com/H7VcD4f.png" alt=""></p>
 <p>END！</p>
 <p>Thanks</p>
 <h3 id="本项目源码"><a href="#本项目源码" class="headerlink" title="本项目源码"></a><a href="https://github.com/Liuzjdev/Thumbsup" target="_blank" rel="noopener">本项目源码</a></h3>
@@ -487,19 +400,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">属性动画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">贝赛尔曲线</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">四大组件</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Activity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">属性动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">贝赛尔曲线</a>
               </li>
             
             <div class="clearfix"></div>
