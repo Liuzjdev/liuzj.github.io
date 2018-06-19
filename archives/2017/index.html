@@ -165,46 +165,6 @@ crossorigin="anonymous"></script>
 
 
 
-<div class='Card-archive' id='hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda' data-name='Hello World' data-version=''>
-	<mark class='Card-badge'></mark>
-	<div class="Card-body">
-		<h3 class='Card-title'>
-			
-				<a href="/2017/05/09/hello-world/">
-			
-			Hello World</a>
-		</h3>
-		<div class="Card-meta">
-			<div class='Card-tags'></div>
-			<ul>
-					<li>
-						<a href="/archives/">
-							<i class='fa fa-calendar'></i> 2017-05-09
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="/2017/05/09/hello-world/#article-comment">
-							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
-						</a>
-					</li>
-					<li>
-						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
-					</li>
-					
-					
-			</ul>
-		</div>
-	</div>
-</div>
-
-	
-		
-
-
-
-
 <div class='Card-archive' id='hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741' data-name='IPC的理解' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -543,14 +503,6 @@ crossorigin="anonymous"></script>
           
           
           
-            var postBadge = document.querySelector('#hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda mark.Card-badge');
-            $(postBadge).fadeOut();
-            
-          
-        
-          
-          
-          
             var postBadge = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 mark.Card-badge');
             $(postBadge).fadeOut();
             
@@ -594,20 +546,6 @@ crossorigin="anonymous"></script>
       success: function(){
           LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
           var leanCloud = LeanCloud.getInstance();
-        
-          
-          
-          // start caching post visit and comment counts
-          leanCloud.fetchCommentCount('/2017/05/09/hello-world/');
-          leanCloud.fetchVisitCount('/2017/05/09/hello-world/');
-          leanCloud.getCommentCount('/2017/05/09/hello-world/', function(count){
-              var el = document.querySelector('#hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda .card-comment-count');
-              if(el) el.innerHTML = count;
-          });
-          leanCloud.getVisitCount('/2017/05/09/hello-world/', function(count){
-              var el = document.querySelector('#hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda .card-visit-count');
-              if(el) el.innerHTML = count;
-          });
         
           
           
