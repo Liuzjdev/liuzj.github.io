@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>No title - Liuzj的博客</title>
+      <title>《Android开发艺术探索》 - Tag - Liuzj的博客</title>
   
 
   
@@ -151,76 +151,95 @@ crossorigin="anonymous"></script>
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div style="flex: 1;">
-      <style>
-    body {
-        background-color: white;
-    }
-</style>
+      <div class='archive-container'>
 
-<section class="page">
-    <div class='page-meta'>
-        <p><small></small></p>
-    </div>
-    <!-- Title -->
-    <div class='article-header'>
-         <h1 class='article-title'>
-            <a href="/assets/demo/hack_demo.html">
-                
-            </a>
-        </h1>
-    </div>
-    <!-- Content -->
-    <div class='article-content'>
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title></title>
-	<style type="text/css">
-		h3,h4{
-			text-align: center;
-		}
-		#main{
-			width: 350px;
-			height: 100px;
-			border: 1px solid #000;
-			margin: 0 auto;
-		}
-		#main .box{
-			width: 100px;
-			height: 100px;
-			margin-left: 10px;
-			position: relative;
-			float: left;
-			background: #333;
-			color:#ddd;
-		}
-		#main .task1:hover{
-			z-index: 999;
-		}
-		#main .task2:hover{
-			z-index: 999;
-			background: #999;
-		}
-		#main .task3:hover{
-			z-index: 999;
-			background: #333;
-		}
-	</style>
-</head>
-<body>
-	<h3>三个background为#333的box</h3>
-	<h4>- 请在IE6，IE7中触发hover -</h4>
-	<div id="main">
-		<div class="box task1">box1 - 未设置backgorund</div>
-		<div class="box task2">box2 - background: #999</div>
-		<div class="box task3">box3 - background: #333</div>
+
+	
+		<h2 class='archive-title'>#   《Android开发艺术探索》</h2>
+	
+	<div class="archive-cards">
+	
+		
+
+
+
+
+<div class='Card-archive' id='hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741' data-name='Hello World' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2017/05/09/《Android开发艺术探索》第二章笔记/">
+			
+			Hello World</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/IPC/">Ipc</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/《Android开发艺术探索》/">《android开发艺术探索》</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-3'><a href="/tags/读书笔记/">读书笔记</a></label>
+			
+		
+	
 	</div>
-</body>
-</html>
-    </div>
-    
-</section>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2017-05-09
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2017/05/09/《Android开发艺术探索》第二章笔记/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+	</div>
+
+
+
+<div class='pagination'>
+	
+	
+	
+		<div class="pagination-item">
+			
+			
+				<span>1</span>
+			
+		</div>
+	
+
+	
+</div>
+</div>
   </div>
 
   
@@ -333,11 +352,50 @@ crossorigin="anonymous"></script>
 <script type='text/javascript'>
 
   
+    loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+    loadjs.ready('post-version', {
+      success: function(){
+        console.log('ready to run badge script')
+        
+          
+          
+          
+            var postBadge = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+      }
+    })
+  
 </script>
 
 
     <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
 <script type='text/javascript'>
+  
+    loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+    loadjs.ready('post-visit-comment-count', {
+      success: function(){
+          LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+          var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
+          leanCloud.fetchVisitCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
+          leanCloud.getCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
+              var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
+              var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+        
+      }
+    })
   
 </script>
 
@@ -352,6 +410,20 @@ initHeadroom();
 
 changeLayoutOnTouchScreen();
 
+// 
+// var post = new Post('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+// $('.Card-archive').each(function(){
+//     var post_url = $(this).attr('id');
+//     var true_url = $(this).find('.Card-title a').first().attr('href');
+//     var card = this;
+//     post.getCommentCount(post_url, function(count){
+//         $(card).find('.card-comment-count').first().text(count);
+//     });
+//     post.getVisitCount(post_url, function(count){
+//         $(card).find('.card-visit-count').first().text(count);
+//     });
+    
+// });
 // 
 </script>
 
