@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast - Liuzj的博客</title>
+  
+
+  
+  
+  <meta name="description" content="Android developer">
+  <meta name="author" content="Liuzj">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+ 
+
+  <!-- load font awesome 5 -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/avatar.png' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Liuzj的博客</a>
+			</h1>
+			<subtitle>
+				思考一切
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果图"><span class="toc-number">2.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码点我点我点我"><span class="toc-number">5.</span> <span class="toc-text">源码点我点我点我</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/" data-name='丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/">
+                丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2016-11-04</li>
+            
+            <li><i class='fa fa-comments'></i> <a href='#article-comment'><span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> Liuzj</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/Toast/">Toast</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/UI/">Ui</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                Liuzj
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>背景  在我们平时做demo，用系统自带的土司还可以。但是当我们在做项目的时候，如果还用系统再带的，那可能就有点low咯。所以让我们一起来打造好看的土司吧。
+效果图哈哈 或许我设计的不是太美观，但是颜色样式位置你都可以自定义，相信你会设计出更好的来
+代码实现官方提供这些方法就是方便我们原来自定义Toast的下面我们来一起看看怎么利用这些方法打造好看的土司吧
+第一步 我们首先建一个用于包装系统土司的类，然后把我们需要修改的内容传给我们定义的土司，然后在调用系统土司的方法，最后显示。第二步...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+        
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果图"><span class="toc-number">2.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码点我点我点我"><span class="toc-number">5.</span> <span class="toc-text">源码点我点我点我</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>  </p><p>在我们平时做demo，用系统自带的土司还可以。但是当我们在做项目的时候，如果还用系统再带的，那可能就有点low咯。所以让我们一起来打造好看的土司吧。</p><p></p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><h4 id="哈哈-或许我设计的不是太美观，但是颜色样式位置你都可以自定义，相信你会设计出更好的来"><a href="#哈哈-或许我设计的不是太美观，但是颜色样式位置你都可以自定义，相信你会设计出更好的来" class="headerlink" title="哈哈 或许我设计的不是太美观，但是颜色样式位置你都可以自定义，相信你会设计出更好的来"></a>哈哈 或许我设计的不是太美观，但是颜色样式位置你都可以自定义，相信你会设计出更好的来</h4><p><br><br><img src="http://i.imgur.com/KWzDSsD.png" alt=""></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h4 id="官方提供这些方法就是方便我们原来自定义Toast的下面我们来一起看看怎么利用这些方法打造好看的土司吧"><a href="#官方提供这些方法就是方便我们原来自定义Toast的下面我们来一起看看怎么利用这些方法打造好看的土司吧" class="headerlink" title="官方提供这些方法就是方便我们原来自定义Toast的下面我们来一起看看怎么利用这些方法打造好看的土司吧"></a>官方提供这些方法就是方便我们原来自定义Toast的下面我们来一起看看怎么利用这些方法打造好看的土司吧</h4><p><img src="http://i.imgur.com/MXutpcj.png" alt=""><br><br></p>
+<h3 id="第一步-我们首先建一个用于包装系统土司的类，然后把我们需要修改的内容传给我们定义的土司，然后在调用系统土司的方法，最后显示。"><a href="#第一步-我们首先建一个用于包装系统土司的类，然后把我们需要修改的内容传给我们定义的土司，然后在调用系统土司的方法，最后显示。" class="headerlink" title="第一步 我们首先建一个用于包装系统土司的类，然后把我们需要修改的内容传给我们定义的土司，然后在调用系统土司的方法，最后显示。"></a>第一步 我们首先建一个用于包装系统土司的类，然后把我们需要修改的内容传给我们定义的土司，然后在调用系统土司的方法，最后显示。</h3><h3 id="第二步-我们利用LayoutInflater来构造我们想要自定义的布局作为土司的布局，首先把我们定义的布局引入，并初始化控件"><a href="#第二步-我们利用LayoutInflater来构造我们想要自定义的布局作为土司的布局，首先把我们定义的布局引入，并初始化控件" class="headerlink" title="第二步 我们利用LayoutInflater来构造我们想要自定义的布局作为土司的布局，首先把我们定义的布局引入，并初始化控件"></a>第二步 我们利用LayoutInflater来构造我们想要自定义的布局作为土司的布局，首先把我们定义的布局引入，并初始化控件</h3><p><img src="http://i.imgur.com/yRsLnR6.png" alt=""></p>
+<h3 id="第三步-我们要给土司设置显示的文字，也就是在之前初始化控件的时候我们自己写的那个textView，现在用我们自己定义的布局来显示要土司的内容，我们当然可以也写一个方法，方便下面我们的使用"><a href="#第三步-我们要给土司设置显示的文字，也就是在之前初始化控件的时候我们自己写的那个textView，现在用我们自己定义的布局来显示要土司的内容，我们当然可以也写一个方法，方便下面我们的使用" class="headerlink" title="第三步 我们要给土司设置显示的文字，也就是在之前初始化控件的时候我们自己写的那个textView，现在用我们自己定义的布局来显示要土司的内容，我们当然可以也写一个方法，方便下面我们的使用"></a>第三步 我们要给土司设置显示的文字，也就是在之前初始化控件的时候我们自己写的那个textView，现在用我们自己定义的布局来显示要土司的内容，我们当然可以也写一个方法，方便下面我们的使用</h3><p><img src="http://i.imgur.com/WmqENIc.png" alt=""></p>
+<h3 id="第四步-现在我们就正式的对系统的土司妹妹动手脚咯-嘿嘿-如果想修改我们自定义土司的位置，可以调用系统的这个方法来实现"><a href="#第四步-现在我们就正式的对系统的土司妹妹动手脚咯-嘿嘿-如果想修改我们自定义土司的位置，可以调用系统的这个方法来实现" class="headerlink" title="第四步 现在我们就正式的对系统的土司妹妹动手脚咯 嘿嘿~ 如果想修改我们自定义土司的位置，可以调用系统的这个方法来实现"></a>第四步 现在我们就正式的对系统的土司妹妹动手脚咯 嘿嘿~ 如果想修改我们自定义土司的位置，可以调用系统的这个方法来实现</h3><h4 id="这里多说一下，这个方法包含四个参数，第一个是土司的显示位置，我设置的是显示在中间位置，第二个参数是在x轴的位置，正数表示往右，负数往左，第三个参数是y轴的位置，正数表示往下，负数往上。这个大家可以改下参数一试便知"><a href="#这里多说一下，这个方法包含四个参数，第一个是土司的显示位置，我设置的是显示在中间位置，第二个参数是在x轴的位置，正数表示往右，负数往左，第三个参数是y轴的位置，正数表示往下，负数往上。这个大家可以改下参数一试便知" class="headerlink" title="这里多说一下，这个方法包含四个参数，第一个是土司的显示位置，我设置的是显示在中间位置，第二个参数是在x轴的位置，正数表示往右，负数往左，第三个参数是y轴的位置，正数表示往下，负数往上。这个大家可以改下参数一试便知"></a>这里多说一下，这个方法包含四个参数，第一个是土司的显示位置，我设置的是显示在中间位置，第二个参数是在x轴的位置，正数表示往右，负数往左，第三个参数是y轴的位置，正数表示往下，负数往上。这个大家可以改下参数一试便知</h4><p><img src="http://i.imgur.com/jMZTNvI.png" alt=""></p>
+<h3 id="第五步-土司的显示时间，这个就简单多了，直接上代码了"><a href="#第五步-土司的显示时间，这个就简单多了，直接上代码了" class="headerlink" title="第五步 土司的显示时间，这个就简单多了，直接上代码了"></a>第五步 土司的显示时间，这个就简单多了，直接上代码了</h3><p><img src="http://i.imgur.com/yDXBnHr.png" alt=""></p>
+<h3 id="第六步-就是让土司显示了，如果不显示再好看的土司我们也看不到啊"><a href="#第六步-就是让土司显示了，如果不显示再好看的土司我们也看不到啊" class="headerlink" title="第六步 就是让土司显示了，如果不显示再好看的土司我们也看不到啊"></a>第六步 就是让土司显示了，如果不显示再好看的土司我们也看不到啊</h3><p><img src="http://i.imgur.com/sYWtIA5.png" alt=""></p>
+<h3 id="最后一步就是模仿土司的使用了，我是这样搞的，你怎么搞都行-当然可以在封装一层使之更简洁"><a href="#最后一步就是模仿土司的使用了，我是这样搞的，你怎么搞都行-当然可以在封装一层使之更简洁" class="headerlink" title="最后一步就是模仿土司的使用了，我是这样搞的，你怎么搞都行 当然可以在封装一层使之更简洁"></a>最后一步就是模仿土司的使用了，我是这样搞的，你怎么搞都行 当然可以在封装一层使之更简洁</h3><p><img src="http://i.imgur.com/dilVC2j.png" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="简单几步打造属于你自己的土司，是不是有点过于简单了呢，如果喜欢就在下面给我点赞哦，如果有那描述的不清晰的也欢迎给我留言问我哦。"><a href="#简单几步打造属于你自己的土司，是不是有点过于简单了呢，如果喜欢就在下面给我点赞哦，如果有那描述的不清晰的也欢迎给我留言问我哦。" class="headerlink" title="简单几步打造属于你自己的土司，是不是有点过于简单了呢，如果喜欢就在下面给我点赞哦，如果有那描述的不清晰的也欢迎给我留言问我哦。"></a>简单几步打造属于你自己的土司，是不是有点过于简单了呢，如果喜欢就在下面给我点赞哦，如果有那描述的不清晰的也欢迎给我留言问我哦。</h3><h2 id="源码点我点我点我"><a href="#源码点我点我点我" class="headerlink" title="源码点我点我点我"></a><a href="http://download.csdn.net/detail/android_zj/9671015" target="_blank" rel="noopener">源码点我点我点我<a></a></a></h2>
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>Comment</h1>
+
+  
+    <div id='valine'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果图"><span class="toc-number">2.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码点我点我点我"><span class="toc-number">5.</span> <span class="toc-text">源码点我点我点我</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'tBcysyoj9731OUF5uYiySi1A-gzGzoHsz',
+        appKey: '9Y8T0FcYUEurAkpRRfii3G2V',
+        placeholder: '元芳，你怎么看',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'en'
+    });
+</script>
+
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_b2a931d620d712d74a962c9ec8b924ade8e5adff1aa30e09829fbd87ffd90ed4').update('hashit_b4d7460114c008e591dd406a407e5f2a5b92794d21550cea9ced782d138d5850', function(){});
+  });
+  
+</script>
+
+
+    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.addVisitRecord('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', user_ip);
+    leanCloud.fetchCommentCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/');
+    leanCloud.fetchVisitCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/');
+    leanCloud.getCommentCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+  });
+  
+</script>
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

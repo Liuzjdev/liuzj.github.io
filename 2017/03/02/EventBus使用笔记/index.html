@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>EventBus使用笔记 - Liuzj的博客</title>
+  
+
+  
+  
+  <meta name="description" content="Android developer">
+  <meta name="author" content="Liuzj">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+ 
+
+  <!-- load font awesome 5 -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/avatar.png' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Liuzj的博客</a>
+			</h1>
+			<subtitle>
+				思考一切
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-a-href-“https-github-com-greenrobot-EventBus”-gt-EventBus源码点我"><span class="toc-number">1.1.</span> <span class="toc-text">&lt;a href=“https://github.com/greenrobot/EventBus”&gt;EventBus源码点我</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、准备工作"><span class="toc-number">2.1.</span> <span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、基本用法"><span class="toc-number">2.2.</span> <span class="toc-text">2、基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。"><span class="toc-number">2.3.</span> <span class="toc-text">3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。</span></a></li></ol></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2017/03/02/EventBus使用笔记/" data-name='EventBus使用笔记' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2017/03/02/EventBus使用笔记/">
+                EventBus使用笔记
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2017-03-02</li>
+            
+            <li><i class='fa fa-comments'></i> <a href='#article-comment'><span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> Liuzj</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/EventBus/">Eventbus</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                Liuzj
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>概念EventBus是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent,Handler,BroadCast在Fragment，Activity，Service，线程之间传递消息.优点是开销小，代码更优雅。以及将发送者和接收者解耦。&lt;a href=“https://github.com/greenrobot/EventBus”&gt;EventBus源码点我使用1、准备工作因为我使用的是Android...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+        
+
+
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-a-href-“https-github-com-greenrobot-EventBus”-gt-EventBus源码点我"><span class="toc-number">1.1.</span> <span class="toc-text">&lt;a href=“https://github.com/greenrobot/EventBus”&gt;EventBus源码点我</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、准备工作"><span class="toc-number">2.1.</span> <span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、基本用法"><span class="toc-number">2.2.</span> <span class="toc-text">2、基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。"><span class="toc-number">2.3.</span> <span class="toc-text">3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。</span></a></li></ol></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h3 id="EventBus是一款针对Android优化的发布-订阅事件总线。主要功能是替代Intent-Handler-BroadCast在Fragment，Activity，Service，线程之间传递消息-优点是开销小，代码更优雅。以及将发送者和接收者解耦。"><a href="#EventBus是一款针对Android优化的发布-订阅事件总线。主要功能是替代Intent-Handler-BroadCast在Fragment，Activity，Service，线程之间传递消息-优点是开销小，代码更优雅。以及将发送者和接收者解耦。" class="headerlink" title="EventBus是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent,Handler,BroadCast在Fragment，Activity，Service，线程之间传递消息.优点是开销小，代码更优雅。以及将发送者和接收者解耦。"></a>EventBus是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent,Handler,BroadCast在Fragment，Activity，Service，线程之间传递消息.优点是开销小，代码更优雅。以及将发送者和接收者解耦。</h3><h2 id="lt-a-href-“https-github-com-greenrobot-EventBus”-gt-EventBus源码点我"><a href="#lt-a-href-“https-github-com-greenrobot-EventBus”-gt-EventBus源码点我" class="headerlink" title="&lt;a href=“https://github.com/greenrobot/EventBus”&gt;EventBus源码点我"></a>&lt;a href=“<a href="https://github.com/greenrobot/EventBus”&gt;EventBus源码点我" target="_blank" rel="noopener">https://github.com/greenrobot/EventBus”&gt;EventBus源码点我</a></h2><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h2><p>因为我使用的是Android Studio，所以第一步要添加依赖：</p>
+<p>￼</p>
+<h2 id="2、基本用法"><a href="#2、基本用法" class="headerlink" title="2、基本用法"></a>2、基本用法</h2><h3 id="1、在需要接收事件分发的页面注册EventBus"><a href="#1、在需要接收事件分发的页面注册EventBus" class="headerlink" title="1、在需要接收事件分发的页面注册EventBus"></a>1、在需要接收事件分发的页面注册EventBus</h3><p>EventBus.getDefault().register(this);</p>
+<h3 id="2、在第二个页面或其他需要发送事件，发送事件使用的是post方法，里面是一个object参数，我们可以自己定义一个类，然后把这个实例传递进去"><a href="#2、在第二个页面或其他需要发送事件，发送事件使用的是post方法，里面是一个object参数，我们可以自己定义一个类，然后把这个实例传递进去" class="headerlink" title="2、在第二个页面或其他需要发送事件，发送事件使用的是post方法，里面是一个object参数，我们可以自己定义一个类，然后把这个实例传递进去"></a>2、在第二个页面或其他需要发送事件，发送事件使用的是post方法，里面是一个object参数，我们可以自己定义一个类，然后把这个实例传递进去</h3><p>EventBus.getDefault().post(new EventParam());</p>
+<h3 id="3、当然就是在注册事件分发的页面接收传递过来的事件了，有四种方法："><a href="#3、当然就是在注册事件分发的页面接收传递过来的事件了，有四种方法：" class="headerlink" title="3、当然就是在注册事件分发的页面接收传递过来的事件了，有四种方法："></a>3、当然就是在注册事件分发的页面接收传递过来的事件了，有四种方法：</h3><p>  onEvent()：在哪个线程发的消息，就在哪个线程执行。<br> onEventMainThread()：无论在哪个线程发布，都在主线程执行<br> onEventBackground()：如果在主线程发布的，他会在子线程执行，如果在子线程发布，那么他会在其他子线程执行。<br> onEventAsync()：无论在哪个线程发布的都会新创建一个线程执行</p>
+<h3 id="4、一定要在注册EventBus结束的时候解除绑定"><a href="#4、一定要在注册EventBus结束的时候解除绑定" class="headerlink" title="4、一定要在注册EventBus结束的时候解除绑定"></a>4、一定要在注册EventBus结束的时候解除绑定</h3><p> EventBus.getDefault().unregister(this);</p>
+<h2 id="3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。"><a href="#3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。" class="headerlink" title="3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。"></a>3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。</h2><p> 就一句话，根据传递进来的参数，参数相同的就会被执行，不同的则不执行</p>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>Comment</h1>
+
+  
+    <div id='valine'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-a-href-“https-github-com-greenrobot-EventBus”-gt-EventBus源码点我"><span class="toc-number">1.1.</span> <span class="toc-text">&lt;a href=“https://github.com/greenrobot/EventBus”&gt;EventBus源码点我</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、准备工作"><span class="toc-number">2.1.</span> <span class="toc-text">1、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、基本用法"><span class="toc-number">2.2.</span> <span class="toc-text">2、基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。"><span class="toc-number">2.3.</span> <span class="toc-text">3、进阶，上面已经说了四个方法的使用了，下面说下怎么区别这四个方法。</span></a></li></ol></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'tBcysyoj9731OUF5uYiySi1A-gzGzoHsz',
+        appKey: '9Y8T0FcYUEurAkpRRfii3G2V',
+        placeholder: '元芳，你怎么看',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'en'
+    });
+</script>
+
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_6d08442a6301799cb28edeb1736fd1ba13a0f468cd1ce701dd46964c16af4a51').update('hashit_a6d3d778028666195e2dda5a6862aa5b718541838388b517f2b01074863eacec', function(){});
+  });
+  
+</script>
+
+
+    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.addVisitRecord('/2017/03/02/EventBus使用笔记/', user_ip);
+    leanCloud.fetchCommentCount('/2017/03/02/EventBus使用笔记/');
+    leanCloud.fetchVisitCount('/2017/03/02/EventBus使用笔记/');
+    leanCloud.getCommentCount('/2017/03/02/EventBus使用笔记/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2017/03/02/EventBus使用笔记/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+  });
+  
+</script>
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

@@ -165,6 +165,46 @@ crossorigin="anonymous"></script>
 
 
 
+<div class='Card-archive' id='hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda' data-name='Hello World' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2017/05/09/hello-world/">
+			
+			Hello World</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'></div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2017-05-09
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2017/05/09/hello-world/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741' data-name='IPC的理解' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -208,6 +248,62 @@ crossorigin="anonymous"></script>
 					
 					<li>
 						<a href="/2017/05/09/《Android开发艺术探索》第二章笔记/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
+<div class='Card-archive' id='hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970' data-name='手机连接电脑不读手机的终极解决方案' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2017/05/03/手机连接电脑不读手机的终极解决方案/">
+			
+			手机连接电脑不读手机的终极解决方案</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/Android开发/">Android开发</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/解决方案/">解决方案</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2017-05-03
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2017/05/03/手机连接电脑不读手机的终极解决方案/#article-comment">
 							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
 						</a>
 					</li>
@@ -347,7 +443,23 @@ crossorigin="anonymous"></script>
           
           
           
+            var postBadge = document.querySelector('#hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
             var postBadge = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
+            var postBadge = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 mark.Card-badge');
             $(postBadge).fadeOut();
             
           
@@ -370,6 +482,20 @@ crossorigin="anonymous"></script>
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchCommentCount('/2017/05/09/hello-world/');
+          leanCloud.fetchVisitCount('/2017/05/09/hello-world/');
+          leanCloud.getCommentCount('/2017/05/09/hello-world/', function(count){
+              var el = document.querySelector('#hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2017/05/09/hello-world/', function(count){
+              var el = document.querySelector('#hashit_e6b7ac0331a37a1c906699ede30602bb5a614548b66e3118aad75e732897bdda .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+        
+          
+          
+          // start caching post visit and comment counts
           leanCloud.fetchCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
           leanCloud.fetchVisitCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
           leanCloud.getCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
@@ -378,6 +504,20 @@ crossorigin="anonymous"></script>
           });
           leanCloud.getVisitCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
               var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchCommentCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/');
+          leanCloud.fetchVisitCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/');
+          leanCloud.getCommentCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/', function(count){
+              var el = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/', function(count){
+              var el = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 .card-visit-count');
               if(el) el.innerHTML = count;
           });
         
