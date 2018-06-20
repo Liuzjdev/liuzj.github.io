@@ -299,6 +299,62 @@ crossorigin="anonymous"></script>
 
 
 
+<div class='Card-archive' id='hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5' data-name='Git 操作' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2017/11/21/Git操作/">
+			
+			Git 操作</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/git/">Git</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/工具/">工具</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2017-11-21
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2017/11/21/Git操作/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741' data-name='IPC的理解' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -946,6 +1002,14 @@ crossorigin="anonymous"></script>
           
           
           
+            var postBadge = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
             var postBadge = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 mark.Card-badge');
             $(postBadge).fadeOut();
             
@@ -1055,6 +1119,20 @@ crossorigin="anonymous"></script>
           });
           leanCloud.getVisitCount('/2018/05/08/Activity总结/', function(count){
               var el = document.querySelector('#hashit_6300f52b08994e4f25b76f3bfde469827813c2123195937e9eb48122a7acee42 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchCommentCount('/2017/11/21/Git操作/');
+          leanCloud.fetchVisitCount('/2017/11/21/Git操作/');
+          leanCloud.getCommentCount('/2017/11/21/Git操作/', function(count){
+              var el = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2017/11/21/Git操作/', function(count){
+              var el = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 .card-visit-count');
               if(el) el.innerHTML = count;
           });
         

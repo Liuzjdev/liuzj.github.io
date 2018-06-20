@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>Git 操作 - Liuzj的博客</title>
+  
+
+  
+  
+  <meta name="description" content="Android developer">
+  <meta name="author" content="Liuzj">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+ 
+
+  <!-- load font awesome 5 -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/avatar.png' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Liuzj的博客</a>
+			</h1>
+			<subtitle>
+				思考一切
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与github建立ssh通信，让Git操作免去输入密码的繁琐。"><span class="toc-number">2.</span> <span class="toc-text">与github建立ssh通信，让Git操作免去输入密码的繁琐。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore"><span class="toc-number">3.</span> <span class="toc-text">gitignore</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2017/11/21/Git操作/" data-name='Git 操作' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2017/11/21/Git操作/">
+                Git 操作
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2017-11-21</li>
+            
+            <li><i class='fa fa-comments'></i> <a href='#article-comment'><span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> Liuzj</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/git/">Git</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/工具/">工具</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                Liuzj
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>git 命令
+创建本地仓库
+
+1git init
+
+获取远程仓库
+
+12git clone [url]例：git clone https://github.com/you/yourpro.git
+
+创建远程仓库
+
+12345678910111213141516// 添加一个新的 remote 远程仓库git remote add [remote-name] [url]例：git remote add origin https://github.com/you/yourpro.gitorigin：相当于该远程仓库的别名// 列出所有 remote 的别名git remote// 列出所有...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+        
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与github建立ssh通信，让Git操作免去输入密码的繁琐。"><span class="toc-number">2.</span> <span class="toc-text">与github建立ssh通信，让Git操作免去输入密码的繁琐。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore"><span class="toc-number">3.</span> <span class="toc-text">gitignore</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h2 id="git-命令"><a href="#git-命令" class="headerlink" title="git 命令"></a>git 命令</h2><ul>
+<li>创建本地仓库</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取远程仓库</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">[url</span>]</span><br><span class="line">例：git <span class="keyword">clone</span> <span class="title">https</span>://github.com/you/yourpro.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建远程仓库</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加一个新的 remote 远程仓库</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">add</span> <span class="selector-attr">[remote-name]</span> <span class="selector-attr">[url]</span></span><br><span class="line">例：<span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">add</span> <span class="selector-tag">origin</span> <span class="selector-tag">https</span>:<span class="comment">//github.com/you/yourpro.git</span></span><br><span class="line"><span class="selector-tag">origin</span>：相当于该远程仓库的别名</span><br><span class="line"></span><br><span class="line"><span class="comment">// 列出所有 remote 的别名</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 列出所有 remote 的 url</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">-v</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一个 renote</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">rm</span> <span class="selector-attr">[name]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重命名 remote</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">rename</span> <span class="selector-attr">[old-name]</span> <span class="selector-attr">[new-name]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从本地仓库中删除</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">rm</span> <span class="keyword">file</span>.txt         <span class="comment">// 从版本库中移除，删除文件</span></span><br><span class="line">git <span class="keyword">rm</span> <span class="keyword">file</span>.txt -cached <span class="comment">// 从版本库中移除，不删除原始文件</span></span><br><span class="line">git <span class="keyword">rm</span> -r xxx           <span class="comment">// 从版本库中删除指定文件夹</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从本地仓库中添加新的文件</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .               // 添加所有文件</span></span><br><span class="line"><span class="bash">git add file.txt        // 添加指定文件</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>提交，把缓存内容提交到 HEAD 里</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"注释"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>撤销</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 撤销最近的一个提交.</span><br><span class="line">git revert HEAD</span><br><span class="line"></span><br><span class="line">// 取消 <span class="keyword">commit</span> + <span class="keyword">add</span></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--mixed</span></span><br><span class="line"></span><br><span class="line">// 取消 <span class="keyword">commit</span></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft</span></span><br><span class="line"></span><br><span class="line">// 取消 <span class="keyword">commit</span> + <span class="keyword">add</span> + <span class="keyword">local</span> working</span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>把本地提交 push 到远程服务器</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-attr">[remote-name]</span> <span class="selector-attr">[loca-branch]</span>:<span class="selector-attr">[remote-branch]</span></span><br><span class="line">例：<span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> <span class="selector-tag">master</span><span class="selector-pseudo">:master</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看状态</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从远程库中下载新的改动</li>
+</ul>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch <span class="string">[remote-name]</span>/<span class="string">[branch]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>合并下载的改动到分支</li>
+</ul>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge <span class="string">[remote-name]</span>/<span class="string">[branch]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从远程库中下载新的改动</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pull = fetch + <span class="keyword">merge</span></span><br><span class="line"></span><br><span class="line">git pull [remote-<span class="keyword">name</span>] [branch]</span><br><span class="line">例：git pull origin <span class="keyword">master</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>分支</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 列出分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新的分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> (branch-name)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一个分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-tag">-d</span> (branch-nam)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除 remote 的分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> (remote-name) <span class="selector-pseudo">:(remote-branch)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>切换分支</li>
+</ul>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换到一个分支</span></span><br><span class="line">git checkout [branch-<span class="keyword">name</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建并切换到该分支</span></span><br><span class="line">git checkout -b [branch-<span class="keyword">name</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="与github建立ssh通信，让Git操作免去输入密码的繁琐。"><a href="#与github建立ssh通信，让Git操作免去输入密码的繁琐。" class="headerlink" title="与github建立ssh通信，让Git操作免去输入密码的繁琐。"></a>与github建立ssh通信，让Git操作免去输入密码的繁琐。</h2><ul>
+<li><p>首先呢，我们先建立ssh密匙。</p>
+<blockquote>
+<p>ssh key must begin with ‘ssh-ed25519’, ‘ssh-rsa’, ‘ssh-dss’, ‘ecdsa-sha2-nistp256’, ‘ecdsa-sha2-nistp384’, or ‘ecdsa-sha2-nistp521’.  – from github</p>
+</blockquote>
+<p>根据以上文段我们可以知道github所支持的ssh密匙类型，这里我们创建ssh-rsa密匙。<br>在command line 中输入以下指令:<code>ssh-keygen -t rsa</code>去创建一个ssh-rsa密匙。如果你并不需要为你的密匙创建密码和修改名字，那么就一路回车就OK，如果你需要，请您自行Google翻译，因为只是英文问题。</p>
+<blockquote>
+<p>$ ssh-keygen -t rsa<br>Generating public/private rsa key pair.<br>//您可以根据括号中的路径来判断你的.ssh文件放在了什么地方<br>Enter file in which to save the key (/c/Users/Liang Guan Quan/.ssh/id_rsa):</p>
+</blockquote>
+</li>
+<li><p>到 <a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a> 这个地址中去添加一个新的SSH key，然后把你的xx.pub文件下的内容文本都复制到Key文本域中，然后就可以提交了。</p>
+</li>
+<li>添加完成之后 我们用<code>ssh git@github.com</code> 命令来连通一下github，如果你在response里面看到了你github账号名，那么就说明配置成功了。  <em>let’s enjoy github ;)</em></li>
+</ul>
+<h2 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h2><hr>
+<p>在本地仓库根目录创建 .gitignore 文件,可以github搜索gitignore，然后下载对应的文件丢到自己项目里即可。Win7 下不能直接创建，可以创建 “.gitignore.” 文件，后面的标点自动被忽略；</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/.idea</span>          <span class="string">//</span> 过滤指定文件夹</span><br><span class="line"><span class="string">/fd/</span>*           <span class="string">//</span> 忽略根目录下的 <span class="string">/fd/</span> 目录的全部内容；</span><br><span class="line">*<span class="string">.iml</span>           <span class="string">//</span> 过滤指定的所有文件</span><br><span class="line">!<span class="string">.gitignore</span>     <span class="string">//</span> 不忽略该文件</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>Comment</h1>
+
+  
+    <div id='valine'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与github建立ssh通信，让Git操作免去输入密码的繁琐。"><span class="toc-number">2.</span> <span class="toc-text">与github建立ssh通信，让Git操作免去输入密码的繁琐。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore"><span class="toc-number">3.</span> <span class="toc-text">gitignore</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'tBcysyoj9731OUF5uYiySi1A-gzGzoHsz',
+        appKey: '9Y8T0FcYUEurAkpRRfii3G2V',
+        placeholder: '元芳，你怎么看',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'en'
+    });
+</script>
+
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5').update('hashit_b6868b6738426c04c89c11418574eb871fc83888843538452135c9d4b63afbb2', function(){});
+  });
+  
+</script>
+
+
+    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.addVisitRecord('/2017/11/21/Git操作/', user_ip);
+    leanCloud.fetchCommentCount('/2017/11/21/Git操作/');
+    leanCloud.fetchVisitCount('/2017/11/21/Git操作/');
+    leanCloud.getCommentCount('/2017/11/21/Git操作/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2017/11/21/Git操作/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+  });
+  
+</script>
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
