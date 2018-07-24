@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>Android开发配置wifi调试教程 - Liuzj的博客</title>
+      <title>Activity总结 - Liuzj的博客</title>
   
 
   
@@ -113,7 +113,7 @@ crossorigin="anonymous"></script>
 		
 
 
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一种：针对没数据线时这种情况"><span class="toc-number">2.</span> <span class="toc-text">第一种：针对没数据线时这种情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二种：针对Android-Studio，相对第一种简单很多"><span class="toc-number">3.</span> <span class="toc-text">第二种：针对Android Studio，相对第一种简单很多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li></ol>
+
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -202,14 +202,14 @@ crossorigin="anonymous"></script>
 
 
 
-<article class="article" id="/2016/12/18/Android开发配置wifi调试教程/" data-name='Android开发配置wifi调试教程' data-version="">
+<article class="article" id="/2018/06/08/art与dalvik区别/" data-name='Activity总结' data-version="">
 
     <!-- Title -->
     <div class='article-header'>
          
          <h1 class='article-title'>
-            <a href="/2016/12/18/Android开发配置wifi调试教程/">
-                Android开发配置wifi调试教程
+            <a href="/2018/06/08/art与dalvik区别/">
+                Activity总结
             </a>
         </h1>
         <!-- TODO: support nested categories,display them nicely -->
@@ -219,7 +219,7 @@ crossorigin="anonymous"></script>
     <!-- Date and Author -->
     <div class='article-meta'>
     <ul>
-            <li><i class='fa fa-calendar'></i> 2016-12-18</li>
+            <li><i class='fa fa-calendar'></i> 2018-06-08</li>
             
             <li><i class='fa fa-comments'></i> <a href='#article-comment'><span id='article-comment-count'>0</span></a></li>
             <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
@@ -239,11 +239,11 @@ crossorigin="anonymous"></script>
 <div class="tags">
 	
 		
-			<label class='tag-1'><a href="/tags/Android-开发/">Android 开发</a></label>
+			<label class='tag-1'><a href="/tags/ART/">Art</a></label>
 		
 	
 		
-			<label class='tag-2'><a href="/tags/Wifi调试/">Wifi调试</a></label>
+			<label class='tag-2'><a href="/tags/Dalvik/">Dalvik</a></label>
 		
 	
 	</div>
@@ -302,9 +302,7 @@ crossorigin="anonymous"></script>
   <h3>Quick Read</h3>
 </div>
 <div class="card-text">
-  <p id='text-post-summary'>背景由于之前一直用数据线调试，手机连接电脑，手机一直处于充电状态，就导致了电池特别不着用，开始充一次电可以用两天左右，调试了不到俩月，现在充满电用不了一天就没电了。所以还是推荐通过wifi调试，第一对手机电池好，第二炫酷呀，可以装x。哈哈，下面我介绍两种方式：
-第一种：针对没数据线时这种情况第一步、需要手机先下载个安卓终端模拟器，当然去网上搜也有很多的，打开终端，依次执行下面步骤第二步、点击你连接的wifi，然后看下面有你的ip地址，记下来第三步、在电脑上，上运行cmd命令提示符，键入如下命令：
-adb connect...</p>
+  <p id='text-post-summary'>Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。ART: Ahead of Time Dalvik: Just in Time什么是Dalvik：Dalvik是Google公司自己设计用于Android平台的Java虚拟机。Dalvik虚拟机是Google等厂商合作开发的Android移动设备平台的核心组成部分之一，它可以支持已转换为.dex(即Dalvik...</p>
 </div>
         </div> -->
     </div>
@@ -319,19 +317,26 @@ adb connect...</p>
         
 
 
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一种：针对没数据线时这种情况"><span class="toc-number">2.</span> <span class="toc-text">第一种：针对没数据线时这种情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二种：针对Android-Studio，相对第一种简单很多"><span class="toc-number">3.</span> <span class="toc-text">第二种：针对Android Studio，相对第一种简单很多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li></ol>
+
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
 
     </div>
     <div class='article-content'>
-    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景<br></h2><p>由于之前一直用数据线调试，手机连接电脑，手机一直处于充电状态，就导致了电池特别不着用，开始充一次电可以用两天左右，调试了不到俩月，现在充满电用不了一天就没电了。所以还是推荐通过wifi调试，第一对手机电池好，第二炫酷呀，可以装x。哈哈，下面我介绍两种方式：</p>
-<h2 id="第一种：针对没数据线时这种情况"><a href="#第一种：针对没数据线时这种情况" class="headerlink" title="第一种：针对没数据线时这种情况"></a>第一种：针对没数据线时这种情况</h2><p>第一步、需要手机先下载个<a href="http://download.csdn.net/download/android_zj/9695429" target="_blank" rel="noopener">安卓终端模拟器</a>，当然去网上搜也有很多的，打开终端，依次执行下面步骤<br><br><img src="http://i.imgur.com/VR0xKA0.png" alt=""><br><br><br>第二步、点击你连接的wifi，然后看下面有你的ip地址，记下来<br><br>第三步、在电脑上，上运行cmd命令提示符，键入如下命令：</p>
-<p>adb connect 上一步让你记得ip地址:5555</p>
-<p>如果没有把adb配置到环境变量里，则需要要先 cd到adb的目录中在执行上述步骤<br>如果提示连接成功，则说明搞定了。</p>
-<h2 id="第二种：针对Android-Studio，相对第一种简单很多"><a href="#第二种：针对Android-Studio，相对第一种简单很多" class="headerlink" title="第二种：针对Android Studio，相对第一种简单很多"></a>第二种：针对Android Studio，相对第一种简单很多</h2><p>第一步、先打开安卓studio的Settings-&gt; Plugins-&gt; Browse Repositories，在里面搜索ADB WiFI<br><br><img src="http://i.imgur.com/skVJO5Z.png" alt=""><br>第二步，重启studio，哈哈<br>第三步、也是关键的一步，直接看下图<br><br><img src="http://i.imgur.com/2wGsoT4.png" alt=""><br><br><br>直接点击ADB USB to WIFI就ok了。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>体验炫酷的wifi调试吧。</p>
+    <h3 id="Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。"><a href="#Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。" class="headerlink" title="Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。"></a>Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。</h3><h3 id="ART-Ahead-of-Time-Dalvik-Just-in-Time"><a href="#ART-Ahead-of-Time-Dalvik-Just-in-Time" class="headerlink" title="ART: Ahead of Time Dalvik: Just in Time"></a>ART: Ahead of Time Dalvik: Just in Time</h3><p><strong>什么是Dalvik</strong>：Dalvik是Google公司自己设计用于Android平台的Java虚拟机。Dalvik虚拟机是Google等厂商合作开发的Android移动设备平台的核心组成部分之一，它可以支持已转换为.dex(即Dalvik Executable)格式的Java应用程序的运行，.dex格式是专为Dalvik应用设计的一种压缩格式，适合内存和处理器速度有限的系统。Dalvik经过优化，允许在有限的内存中同时运行多个虚拟机的实例，并且每一个Dalvik应用作为独立的Linux进程执行。独立的进程可以防止在虚拟机崩溃的时候所有程序都被关闭。</p>
+<p><strong>什么是ART:</strong>Android操作系统已经成熟，Google的Android团队开始将注意力转向一些底层组件，其中之一是负责应用程序运行的Dalvik运行时。Google开发者已经花了两年时间开发更快执行效率更高更省电的替代ART运行时。ART代表Android Runtime,其处理应用程序执行的方式完全不同于Dalvik，Dalvik是依靠一个Just-In-Time(JIT)编译器去解释字节码。开发者编译后的应用代码需要通过一个解释器在用户的设备上运行，这一机制并不高效，但让应用能更容易在不同硬件和架构上运行。ART则完全改变了这套做法，在应用安装的时候就预编译字节码到机器语言，这一机制叫Ahead-Of-Time(AOT)编译。在移除解释代码这一过程后，应用程序执行将更有效率，启动更快。</p>
+<h3 id="ART优点："><a href="#ART优点：" class="headerlink" title="ART优点："></a>ART优点：</h3><ul>
+<li>系统性能的显著提升</li>
+<li>应用启动更快、运行更快、体验更流畅、触感反馈更及时</li>
+<li>更长的电池续航能力</li>
+<li>支持更低的硬件</li>
+</ul>
+<p>###ART缺点：</p>
+<ul>
+<li>更大的存储空间占用，可能会增加10%-20%</li>
+<li>更长的应用安装时间</li>
+</ul>
 
     
     </div>
@@ -382,7 +387,7 @@ adb connect...</p>
 		
 
 
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一种：针对没数据线时这种情况"><span class="toc-number">2.</span> <span class="toc-text">第一种：针对没数据线时这种情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二种：针对Android-Studio，相对第一种简单很多"><span class="toc-number">3.</span> <span class="toc-text">第二种：针对Android Studio，相对第一种简单很多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li></ol>
+
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -477,7 +482,7 @@ adb connect...</p>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_31464258bee59531fcf665daa145df2c11ad7f6d829aea4ee9e7ef638f0c3d52').update('hashit_6070741108b956c566ce6ec365aae3acb5536beb7fe39399822df018c3cb0b6d', function(){});
+    new Postv2('hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f').update('hashit_486389ff12c0a8401bd2cb99a673e16c5d1feb7a3b91c946be7e28be13087ea2', function(){});
   });
   
 </script>
@@ -493,14 +498,14 @@ adb connect...</p>
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.addVisitRecord('/2016/12/18/Android开发配置wifi调试教程/', user_ip);
-    leanCloud.fetchCommentCount('/2016/12/18/Android开发配置wifi调试教程/');
-    leanCloud.fetchVisitCount('/2016/12/18/Android开发配置wifi调试教程/');
-    leanCloud.getCommentCount('/2016/12/18/Android开发配置wifi调试教程/', function(count){
+    leanCloud.addVisitRecord('/2018/06/08/art与dalvik区别/', user_ip);
+    leanCloud.fetchCommentCount('/2018/06/08/art与dalvik区别/');
+    leanCloud.fetchVisitCount('/2018/06/08/art与dalvik区别/');
+    leanCloud.getCommentCount('/2018/06/08/art与dalvik区别/', function(count){
         var el = document.querySelector('#article-comment-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getVisitCount('/2016/12/18/Android开发配置wifi调试教程/', function(count){
+    leanCloud.getVisitCount('/2018/06/08/art与dalvik区别/', function(count){
         var el = document.querySelector('#article-visit-count');
         if(el) el.innerHTML = count;
     });
