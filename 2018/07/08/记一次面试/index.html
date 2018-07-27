@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>记一次面试 - Liuzj的博客</title>
+  
+
+  
+  
+  <meta name="description" content="Android developer">
+  <meta name="author" content="Liuzj">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+
+<link rel="stylesheet" href="/libs/animate.css/animate.min.css">
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+ 
+
+  <!-- load font awesome 5 -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/avatar.png' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Liuzj的博客</a>
+			</h1>
+			<subtitle>
+				思考一切
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄漏和内存溢出"><span class="toc-number">1.</span> <span class="toc-text">内存泄漏和内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件分发"><span class="toc-number">2.</span> <span class="toc-text">事件分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片三级缓存"><span class="toc-number">3.</span> <span class="toc-text">图片三级缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适配"><span class="toc-number">4.</span> <span class="toc-text">适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView"><span class="toc-number">5.</span> <span class="toc-text">ListView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束布局"><span class="toc-number">6.</span> <span class="toc-text">约束布局</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2018/07/08/记一次面试/" data-name='记一次面试' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2018/07/08/记一次面试/">
+                记一次面试
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2018-07-08</li>
+            
+            <li><i class='fa fa-comments'></i> <a href='#article-comment'><span id='article-comment-count'>0</span></a></li>
+            <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
+            
+            <li><i class="fa fa-user"></i> Liuzj</li>
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/基础知识/">基础知识</a></label>
+		
+	
+		
+			<label class='tag-2'><a href="/tags/面经/">面经</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                Liuzj
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>内存泄漏和内存溢出概念
+内存泄漏：垃圾回收器无法回收原本应该被回收的对象，这个对象就引发了内存泄露。
+内存溢出：过多的内存泄露最终会导致内存溢出（OOM）如何避免内存泄漏的情况
+无用连接及时关闭，Cursor，InputStream..
+static对象的生命周期过长，应该谨慎使用
+在处理一些占用内存大而且声明周期较长的对象时候，可以尽量应用软引用和弱引用技术。
+不要使用String进行字符串拼接,使用StringBuffer或者StringBuilder代替String，可以在一定程度上避免OOM和内存抖动。
+不要使用Enum
+…Handler会不会造成内存泄漏Handler...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+        
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄漏和内存溢出"><span class="toc-number">1.</span> <span class="toc-text">内存泄漏和内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件分发"><span class="toc-number">2.</span> <span class="toc-text">事件分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片三级缓存"><span class="toc-number">3.</span> <span class="toc-text">图片三级缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适配"><span class="toc-number">4.</span> <span class="toc-text">适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView"><span class="toc-number">5.</span> <span class="toc-text">ListView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束布局"><span class="toc-number">6.</span> <span class="toc-text">约束布局</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <h2 id="内存泄漏和内存溢出"><a href="#内存泄漏和内存溢出" class="headerlink" title="内存泄漏和内存溢出"></a>内存泄漏和内存溢出</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>内存泄漏：垃圾回收器无法回收原本应该被回收的对象，这个对象就引发了内存泄露。</li>
+<li>内存溢出：过多的内存泄露最终会导致内存溢出（OOM）<h3 id="如何避免内存泄漏的情况"><a href="#如何避免内存泄漏的情况" class="headerlink" title="如何避免内存泄漏的情况"></a>如何避免内存泄漏的情况</h3></li>
+<li>无用连接及时关闭，Cursor，InputStream..</li>
+<li>static对象的生命周期过长，应该谨慎使用</li>
+<li>在处理一些占用内存大而且声明周期较长的对象时候，可以尽量应用软引用和弱引用技术。</li>
+<li>不要使用String进行字符串拼接,使用StringBuffer或者StringBuilder代替String，可以在一定程度上避免OOM和内存抖动。</li>
+<li>不要使用Enum</li>
+<li>…<h3 id="Handler会不会造成内存泄漏"><a href="#Handler会不会造成内存泄漏" class="headerlink" title="Handler会不会造成内存泄漏"></a>Handler会不会造成内存泄漏</h3>Handler 的使用造成的内存泄漏问题应该说是最为常见了，很多时候我们为了避免 ANR 而不在主线程进行耗时操作，在处理网络任务或者封装一些请求回调等api都借助Handler来处理，但 Handler 不是万能的，对于 Handler 的使用代码编写一不规范即有可能造成内存泄漏。另外，我们知道 Handler、Message 和 MessageQueue 都是相互关联在一起的，万一 Handler 发送的 Message 尚未被处理，则该 Message 及发送它的 Handler 对象将被线程 MessageQueue 一直持有。</li>
+</ul>
+<p>由于 Handler 属于 TLS(Thread Local Storage) 变量, 生命周期和 Activity 是不一致的。因此这种实现方式一般很难保证跟 View 或者 Activity 的生命周期保持一致，故很容易导致无法正确释放。</p>
+<h2 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h2><p><a href="https://www.jianshu.com/p/e99b5e8bd67b" target="_blank" rel="noopener">图解 Android 事件分发机制</a></p>
+<h2 id="图片三级缓存"><a href="#图片三级缓存" class="headerlink" title="图片三级缓存"></a>图片三级缓存</h2><ul>
+<li>网络加载，不优先加载，速度慢，浪费流量</li>
+<li>本地缓存，次优先加载，速度快</li>
+<li>内存缓存，优先加载，速度最快</li>
+</ul>
+<p>如果内存不足，是怎样去清理图片呢  我当时就知道个LRUCache,这块后续更新，自己还没细看过</p>
+<h2 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h2><p>一张200*200的图片，第一次放在hdpi  第二次放在xdpi 第三次放在xxxdpi ，跑在小米6手机上，三种效果是怎样的？为什么会这样</p>
+<h2 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h2><ul>
+<li>怎么实现类似qq分组效果，我当时说根据不同的ViewType加载不同的布局。</li>
+<li>如果用ListView嵌套ListView实现，公用一个adapter，怎么区分点击的是组的Item还是里面的子Item，这个当时没想出来，知道的麻烦告诉下，谢谢啦</li>
+</ul>
+<h2 id="约束布局"><a href="#约束布局" class="headerlink" title="约束布局"></a>约束布局</h2><ul>
+<li>有没有用过约束布局？</li>
+<li>好在哪？</li>
+</ul>
+
+    
+    </div>
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>Comment</h1>
+
+  
+    <div id='valine'></div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄漏和内存溢出"><span class="toc-number">1.</span> <span class="toc-text">内存泄漏和内存溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件分发"><span class="toc-number">2.</span> <span class="toc-text">事件分发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片三级缓存"><span class="toc-number">3.</span> <span class="toc-text">图片三级缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适配"><span class="toc-number">4.</span> <span class="toc-text">适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView"><span class="toc-number">5.</span> <span class="toc-text">ListView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束布局"><span class="toc-number">6.</span> <span class="toc-text">约束布局</span></a></li></ol>
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-shadow/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-shadow/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-shadow/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-shadow/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+    
+    
+    
+<script>
+    new Valine({
+        el: '#valine',
+        notify:false, 
+        verify:false,
+        appId: 'tBcysyoj9731OUF5uYiySi1A-gzGzoHsz',
+        appKey: '9Y8T0FcYUEurAkpRRfii3G2V',
+        placeholder: '元芳，你怎么看',
+        path:window.location.pathname, 
+        avatar:'retro',
+        lang: 'en'
+    });
+</script>
+
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_c6170f55d8646db0aee6ef9476de8f0105cc38dbd782b5feeb827a3be40be645').update('hashit_98900896e034a85bd844fc936e5cc467bed5c4427af581c37a2a19fc75ccac96', function(){});
+  });
+  
+</script>
+
+
+    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+<script type='text/javascript'>
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
+  loadjs.ready('post-visit-comment-count', function(){
+    
+    
+    LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+    var leanCloud = LeanCloud.getInstance();
+    leanCloud.addVisitRecord('/2018/07/08/记一次面试/', user_ip);
+    leanCloud.fetchCommentCount('/2018/07/08/记一次面试/');
+    leanCloud.fetchVisitCount('/2018/07/08/记一次面试/');
+    leanCloud.getCommentCount('/2018/07/08/记一次面试/', function(count){
+        var el = document.querySelector('#article-comment-count');
+        if(el) el.innerHTML = count;
+    });
+    leanCloud.getVisitCount('/2018/07/08/记一次面试/', function(count){
+        var el = document.querySelector('#article-visit-count');
+        if(el) el.innerHTML = count;
+    });
+  });
+  
+</script>
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
