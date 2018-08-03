@@ -113,7 +113,10 @@ crossorigin="anonymous"></script>
 		
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#右键没有SVN菜单？简单几步把菜单给你变出来"><span class="toc-number">1.</span> <span class="toc-text">右键没有SVN菜单？简单几步把菜单给你变出来</span></a></li></ol>
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -124,7 +127,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -133,7 +136,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -145,6 +148,7 @@ crossorigin="anonymous"></script>
 				</a>
 		</div>
 		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
 		
 		
 	</div>
@@ -315,10 +319,14 @@ crossorigin="anonymous"></script>
     <!-- Content -->
     <!-- TODO: support table of content -->
     <div class="article-toc" id='article-toc'>
+    
         
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#右键没有SVN菜单？简单几步把菜单给你变出来"><span class="toc-number">1.</span> <span class="toc-text">右键没有SVN菜单？简单几步把菜单给你变出来</span></a></li></ol>
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -338,7 +346,7 @@ crossorigin="anonymous"></script>
         <div class="article-comment" id='article-comment'>
             
 
-<h1>Commento</h1>
+<h1>Comment</h1>
 
   
     <div id='valine'></div>
@@ -356,7 +364,7 @@ crossorigin="anonymous"></script>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> e <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Tema: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.17-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -380,7 +388,10 @@ crossorigin="anonymous"></script>
 		
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#右键没有SVN菜单？简单几步把菜单给你变出来"><span class="toc-number">1.</span> <span class="toc-text">右键没有SVN菜单？简单几步把菜单给你变出来</span></a></li></ol>
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -391,7 +402,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -400,7 +411,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -412,6 +423,7 @@ crossorigin="anonymous"></script>
 				</a>
 		</div>
 		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
 		
 		
 	</div>
@@ -475,7 +487,7 @@ crossorigin="anonymous"></script>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_f811320dc66573601224be23a16f05831d53c8a0fccaa0b63487ad4970e91ca9').update('hashit_d3d834440bf6d4d2c4df71d35d1aa4e4658cbc4723f2d8afab1ea4baab565906', function(){});
+    new Postv2('hashit_f811320dc66573601224be23a16f05831d53c8a0fccaa0b63487ad4970e91ca9').update('hashit_4ba1094b6a563e1301a3a1fb2773525b6bfe1d79ec0eaf9d9cdec15c77b36773', function(){});
   });
   
 </script>
@@ -529,7 +541,6 @@ changeLayoutOnTouchScreen();
 
 // 
 </script>
-
 
 
 <!-- End Document

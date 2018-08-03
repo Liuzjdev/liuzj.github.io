@@ -1,6 +1,7 @@
 .index-container {
   margin: 0 auto;
   margin-top: 11em;
+for_breakpoint(mobile)
   text-align: center;
   margin-bottom: 5em;
 }

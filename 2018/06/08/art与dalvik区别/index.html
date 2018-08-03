@@ -113,7 +113,10 @@ crossorigin="anonymous"></script>
 		
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -124,7 +127,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -133,7 +136,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -145,6 +148,7 @@ crossorigin="anonymous"></script>
 				</a>
 		</div>
 		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
 		
 		
 	</div>
@@ -314,10 +318,14 @@ crossorigin="anonymous"></script>
     <!-- Content -->
     <!-- TODO: support table of content -->
     <div class="article-toc" id='article-toc'>
+    
         
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -344,7 +352,7 @@ crossorigin="anonymous"></script>
         <div class="article-comment" id='article-comment'>
             
 
-<h1>Commento</h1>
+<h1>Comment</h1>
 
   
     <div id='valine'></div>
@@ -362,7 +370,7 @@ crossorigin="anonymous"></script>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> e <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Tema: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.17-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -386,7 +394,10 @@ crossorigin="anonymous"></script>
 		
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -397,7 +408,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -406,7 +417,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -418,6 +429,7 @@ crossorigin="anonymous"></script>
 				</a>
 		</div>
 		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
 		
 		
 	</div>
@@ -481,7 +493,7 @@ crossorigin="anonymous"></script>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f').update('hashit_14a41f9a44e6dc57e1d7ceaed86dd8749e1c89def73609f3032c186bf57df6e0', function(){});
+    new Postv2('hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f').update('hashit_b94127069cba1de48919532aad9cb9a4a5002f67e33033c2d80cd48130b5ba1b', function(){});
   });
   
 </script>
@@ -535,7 +547,6 @@ changeLayoutOnTouchScreen();
 
 // 
 </script>
-
 
 
 <!-- End Document

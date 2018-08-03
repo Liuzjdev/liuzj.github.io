@@ -640,21 +640,3 @@
   animation-fill-mode: both;
   animation-delay: 0.1s;
 }
-.footer-nav.headroom {
-  animation-name: fadeInUp;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-delay: 0.3s;
-}
-.footer-nav.headroom--pinned {
-  animation-name: fadeInUp;
-  animation-duration: 0.7s;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-}
-.footer-nav.headroom--unpinned {
-  animation-name: fadeOutDown;
-  animation-duration: 0.7s;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-}

@@ -11,10 +11,10 @@ for_breakpoint(half-desktop)
 .search-container #search-form {
   border: none;
   width: 60%;
+  border-bottom: 2px solid #eee;
 for_breakpoint(mobile)
   padding: 0.5em;
   margin: 0.5em;
-  border-radius: 5px;
   font-size: 1.2em;
 }
 .search-container input:focus {

@@ -500,10 +500,16 @@ html {
     justify-content: space-around;
     width: 100%;
     align-content: center;
+    flex-direction: column;
   }
 }
 #nav .nav-item {
-  padding: 0 1em;
+  padding: 1em 1em;
+}
+@media only screen and (max-width: 600px) {
+  #nav .nav-item {
+    padding: 0.5em 0.5em;
+  }
 }
 #nav .nav-item a {
   text-decoration: none;
@@ -632,11 +638,6 @@ html {
     transition: width 1s;
   }
 }
-#nav .toc {
-  position: fixed;
-  bottom: 5em;
-  left: 0;
-}
 #nav .nav-more-menu {
   background-color: transparent;
   position: absolute;
@@ -661,17 +662,29 @@ html {
 }
 @media only screen and (max-width: 600px) {
   #nav .nav-more-menu {
-    bottom: 4em;
-    right: 0.5em;
+    position: fixed;
+    top: 35vh;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 1px #ddd;
     padding-top: 0;
-    box-shadow: -5px 5px 10px 1px #ddd;
-    border-radius: 10px;
+    width: 100%;
+    height: 14em;
+    overflow: auto;
   }
 }
 #nav .nav-more-menu .nav-more-item {
   width: 100%;
   padding: 1em 2em;
   background-color: #fff;
+}
+@media only screen and (max-width: 600px) {
+  #nav .nav-more-menu .nav-more-item {
+    width: 85vw;
+    padding: 1em 0em;
+    padding-left: 15vw;
+    text-align: left;
+  }
 }
 #nav .nav-more-menu .nav-more-item .nav-name:hover {
   position: relative;
@@ -689,6 +702,19 @@ html {
   top: 0;
   bottom: 0;
   left: -1.2em;
+}
+#nav-more-menu-close,
+#toc-close {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  #nav-more-menu-close,
+  #toc-close {
+    display: block;
+    float: right;
+    padding: 0.5em;
+    font-size: 1.2em;
+  }
 }
 .nav-more-menu {
   display: none;
@@ -779,15 +805,20 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 7em;
+  height: 5.5em;
   z-index: 101;
-  box-shadow: 0px 1px 10px 1px #ddd;
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   color: #222;
 /* header title */
+}
+@media only screen and (max-width: 600px) {
+  .header {
+    height: 4em;
+    box-shadow: none;
+  }
 }
 .header a:visited,
 .header a:active,
@@ -845,28 +876,30 @@ html {
 }
 .header .header-title .header-logo {
   text-align: center;
-  margin-right: 1em;
-  margin-top: 3em;
+}
+@media only screen and (max-width: 600px) {
+  .header .header-title .header-logo {
+    display: none;
+  }
 }
 .header .header-title .header-logo img {
   background-color: #fff;
-  width: 7em;
+  width: 4.2em;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px 3px #e5e5e5;
 }
 .header .header-title .header-text {
   text-align: left;
-  margin-top: 2.5em;
+  margin-left: 1em;
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
 }
 @media only screen and (max-width: 600px) {
   .header .header-title .header-text {
-    display: none;
+    margin-top: 0em;
   }
 }
 .header .header-title .header-text h1 {
   display: inline;
-  font-size: 2em;
+  font-size: 1.6em;
   margin: 0;
   letter-spacing: -1px;
 }
@@ -875,10 +908,16 @@ html {
     font-size: 1.5em;
   }
 }
+@media only screen and (max-width: 600px) {
+  .header .header-title .header-text h1 {
+    font-size: 1.5em;
+  }
+}
 .header .header-title .header-text subtitle {
   display: inline;
   font-weight: 100;
   font-size: 1em;
+  padding-left: 0.5em;
 }
 @media only screen and (min-width: 601px) and (max-width: 800px) {
   .header .header-title .header-text subtitle {
@@ -893,18 +932,24 @@ html {
 .footer-nav {
   display: none;
   position: fixed;
-  bottom: -5px;
-  left: 0;
-  background-color: #fff;
+  bottom: 0.5em;
+  right: 0.2em;
   width: 100%;
-  height: 5em;
-  box-shadow: 0px -5px 10px 1px #ddd;
+  border-radius: 10px;
 }
 @media only screen and (max-width: 600px) {
   .footer-nav {
-    display: flex;
-    align-content: center;
+    display: block;
+    padding: 0em 0;
+    width: 12%;
   }
+}
+.footer-nav #nav {
+  display: block;
+  height: 100%;
+}
+.footer-nav .nav-item {
+  float: right;
 }
 #footer {
   width: 70vw;
@@ -1181,14 +1226,14 @@ html {
 .search-container #search-form {
   border: none;
   width: 60%;
+  border-bottom: 2px solid #eee;
   padding: 0.5em;
   margin: 0.5em;
-  border-radius: 5px;
   font-size: 1.2em;
 }
 @media only screen and (max-width: 600px) {
   .search-container #search-form {
-    width: 60%;
+    width: 90%;
   }
 }
 .search-container input:focus {
@@ -1321,13 +1366,14 @@ html {
 @media only screen and (max-width: 600px) {
   .article,
   .page {
-    width: 85vw;
+    width: 80%;
+    margin: 0 0 0 6%;
   }
 }
 @media only screen and (max-width: 600px) {
   .article,
   .page {
-    margin-top: 12em;
+    margin-top: 7em;
   }
 }
 .article .article-title,
@@ -1443,14 +1489,19 @@ html {
 .page .article-toc {
   position: fixed;
   top: 10em;
-  right: 4em;
-  z-index: 100;
+  left: 25vw;
+  background-color: #fff;
+  z-index: 101;
 }
 @media only screen and (max-width: 600px) {
   .article .article-toc,
   .page .article-toc {
     display: none;
   }
+}
+.article .article-toc .toc-button,
+.page .article-toc .toc-button {
+  z-index: 0;
 }
 .article .article-toc .toc-button img,
 .page .article-toc .toc-button img {
@@ -1467,36 +1518,63 @@ html {
 .page .page-meta p {
   margin: 0;
 }
-#article-toc:hover .toc {
+#article-toc:hover .toc-container {
   display: block;
 }
 #article-toc:hover .toc-button {
   display: none;
 }
-.toc {
-  display: none;
-  padding: 1em;
-  margin-left: 0.75em;
-  box-shadow: 0px 0px 10px 5px #ddd;
-  background-color: #fff;
-  border-radius: 10px;
-  margin-bottom: 0;
-  max-height: 50vh;
-  overflow: auto;
+.toc-container {
+  position: relative;
 }
 @media only screen and (max-width: 600px) {
-  .toc {
-    width: 80%;
+  .toc-container {
+    position: fixed;
+    top: 30vh;
+    right: 0;
   }
 }
-.toc ol {
-  background-color: #fff;
+.toc-container {
+  display: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
 }
-.toc li {
+@media only screen and (max-width: 600px) {
+  .toc-container {
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0px 0px 10px 3px #ddd;
+  }
+}
+.toc-container .toc {
+  overflow: auto;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  max-height: 60vh;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+@media only screen and (max-width: 600px) {
+  .toc-container .toc {
+    max-height: 15em;
+    background-color: #fff;
+  }
+}
+.toc-container ol {
+  background-color: #fff;
+  padding-left: 1em;
+}
+.toc-container li {
   list-style-type: none;
   line-height: 1.5;
   background-color: #fff;
   padding: 0;
+}
+@media only screen and (max-width: 600px) {
+  .toc-container li {
+    padding-left: 0.5em;
+  }
 }
 @font-face {
   font-family: SegoeUI;
@@ -2034,6 +2112,11 @@ html {
   text-align: center;
   margin-bottom: 5em;
 }
+@media only screen and (max-width: 600px) {
+  .index-container {
+    margin-top: 6em;
+  }
+}
 .index-cards {
   margin: 0 auto;
   margin-top: 3em;
@@ -2054,13 +2137,13 @@ html {
 }
 @media only screen and (max-width: 600px) {
   .index-cards {
-    width: 90vw;
-    justify-content: center;
+    width: 85vw;
+    justify-content: flex-start;
     padding: 0;
   }
 }
 body {
-  background-color: #f5f5f5;
+  background-color: #fafafa;
 }
 .Card {
   font-size: 14px;
@@ -2072,7 +2155,7 @@ body {
   border-radius: 5px;
   box-shadow: 0.5px 0.5px 3px -0.5px rgba(170,175,173,0.61);
   margin: 0.5em 0;
-  min-height: 14em;
+  min-height: 16em;
   padding: 0 2%;
   position: relative;
 }
@@ -3031,24 +3114,6 @@ body {
 }
 .announcement.headroom--unpinned {
   animation-name: translateUpAnouncement;
-  animation-duration: 0.7s;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-}
-.footer-nav.headroom {
-  animation-name: fadeInUp;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-delay: 0.3s;
-}
-.footer-nav.headroom--pinned {
-  animation-name: fadeInUp;
-  animation-duration: 0.7s;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-}
-.footer-nav.headroom--unpinned {
-  animation-name: fadeOutDown;
   animation-duration: 0.7s;
   animation-fill-mode: both;
   animation-delay: 0.1s;

@@ -113,7 +113,10 @@ crossorigin="anonymous"></script>
 		
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC"><span class="toc-number">1.</span> <span class="toc-text">IPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和线程的区别"><span class="toc-number">2.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多进程分为两种"><span class="toc-number">3.</span> <span class="toc-text">多进程分为两种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android中的多进程模式"><span class="toc-number">4.</span> <span class="toc-text">Android中的多进程模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多进程模式的运行机制"><span class="toc-number">5.</span> <span class="toc-text">多进程模式的运行机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC基础概念介绍"><span class="toc-number">6.</span> <span class="toc-text">IPC基础概念介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parcelable接口"><span class="toc-number">7.</span> <span class="toc-text">Parcelable接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何选取"><span class="toc-number">8.</span> <span class="toc-text">如何选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binder"><span class="toc-number">9.</span> <span class="toc-text">Binder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android的IPC方式"><span class="toc-number">10.</span> <span class="toc-text">Android的IPC方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binder连接池"><span class="toc-number">11.</span> <span class="toc-text">Binder连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选用合适的IPC方式"><span class="toc-number">12.</span> <span class="toc-text">选用合适的IPC方式</span></a></li></ol>
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -124,7 +127,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -133,7 +136,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -145,6 +148,7 @@ crossorigin="anonymous"></script>
 				</a>
 		</div>
 		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
 		
 		
 	</div>
@@ -319,10 +323,14 @@ Inter-Process...</p>
     <!-- Content -->
     <!-- TODO: support table of content -->
     <div class="article-toc" id='article-toc'>
+    
         
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC"><span class="toc-number">1.</span> <span class="toc-text">IPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和线程的区别"><span class="toc-number">2.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多进程分为两种"><span class="toc-number">3.</span> <span class="toc-text">多进程分为两种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android中的多进程模式"><span class="toc-number">4.</span> <span class="toc-text">Android中的多进程模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多进程模式的运行机制"><span class="toc-number">5.</span> <span class="toc-text">多进程模式的运行机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC基础概念介绍"><span class="toc-number">6.</span> <span class="toc-text">IPC基础概念介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parcelable接口"><span class="toc-number">7.</span> <span class="toc-text">Parcelable接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何选取"><span class="toc-number">8.</span> <span class="toc-text">如何选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binder"><span class="toc-number">9.</span> <span class="toc-text">Binder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android的IPC方式"><span class="toc-number">10.</span> <span class="toc-text">Android的IPC方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binder连接池"><span class="toc-number">11.</span> <span class="toc-text">Binder连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选用合适的IPC方式"><span class="toc-number">12.</span> <span class="toc-text">选用合适的IPC方式</span></a></li></ol>
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -465,7 +473,7 @@ Inter-Process...</p>
         <div class="article-comment" id='article-comment'>
             
 
-<h1>Commento</h1>
+<h1>Comment</h1>
 
   
     <div id='valine'></div>
@@ -483,7 +491,7 @@ Inter-Process...</p>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> e <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Tema: <a href="https://liuzjdev.github.io/">Cutie 2.0.13-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.17-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -507,7 +515,10 @@ Inter-Process...</p>
 		
 
 
+<div class='toc-container'>
+<i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC"><span class="toc-number">1.</span> <span class="toc-text">IPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和线程的区别"><span class="toc-number">2.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多进程分为两种"><span class="toc-number">3.</span> <span class="toc-text">多进程分为两种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android中的多进程模式"><span class="toc-number">4.</span> <span class="toc-text">Android中的多进程模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多进程模式的运行机制"><span class="toc-number">5.</span> <span class="toc-text">多进程模式的运行机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC基础概念介绍"><span class="toc-number">6.</span> <span class="toc-text">IPC基础概念介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parcelable接口"><span class="toc-number">7.</span> <span class="toc-text">Parcelable接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何选取"><span class="toc-number">8.</span> <span class="toc-text">如何选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binder"><span class="toc-number">9.</span> <span class="toc-text">Binder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android的IPC方式"><span class="toc-number">10.</span> <span class="toc-text">Android的IPC方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binder连接池"><span class="toc-number">11.</span> <span class="toc-text">Binder连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选用合适的IPC方式"><span class="toc-number">12.</span> <span class="toc-text">选用合适的IPC方式</span></a></li></ol>
+</div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
 </div>
@@ -518,7 +529,7 @@ Inter-Process...</p>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='Archivi'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -527,7 +538,7 @@ Inter-Process...</p>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Cerca'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -539,6 +550,7 @@ Inter-Process...</p>
 				</a>
 		</div>
 		<div class="nav-more-menu">
+				<i class="far fa-times-circle" id='nav-more-menu-close' onclick='onClickNavMenuClose(event);' ontouchstart='onClickNavMenuClose(event);'></i>
 		
 		
 	</div>
@@ -602,7 +614,7 @@ Inter-Process...</p>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741').update('hashit_19e4eef794705db3868aa4cb74245def9373e0b90b7908012d2d6157cc8fa7b5', function(){});
+    new Postv2('hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741').update('hashit_bb4b016318db842ed38f78873c0baffc9dd93e96b685bb5b9ff5ecfffbd6a844', function(){});
   });
   
 </script>
@@ -656,7 +668,6 @@ changeLayoutOnTouchScreen();
 
 // 
 </script>
-
 
 
 <!-- End Document

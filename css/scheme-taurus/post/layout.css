@@ -26,9 +26,9 @@
 .article,
 .page {
   max-width: 800px;
+  margin: 0 auto;
 for_breakpoint(tablet)
 for_breakpoint(mobile)
-  margin: 0 auto;
   padding: 0;
   margin-top: 10em;
 for_breakpoint(mobile)
@@ -113,8 +113,13 @@ for_breakpoint(mobile)
 }
 .article .article-toc,
 .page .article-toc {
-  z-index: 100;
+  background-color: #fff;
+  z-index: 101;
 for_breakpoint(mobile)
+}
+.article .article-toc .toc-button,
+.page .article-toc .toc-button {
+  z-index: 0;
 }
 .article .article-toc .toc-button img,
 .page .article-toc .toc-button img {
@@ -131,30 +136,40 @@ for_breakpoint(mobile)
 .page .page-meta p {
   margin: 0;
 }
-#article-toc:hover .toc {
+#article-toc:hover .toc-container {
   display: block;
 }
 #article-toc:hover .toc-button {
   display: none;
 }
-.toc {
-  display: none;
-  padding: 1em;
-  margin-left: 0.75em;
+.toc-container {
+  position: relative;
 for_breakpoint(mobile)
-  box-shadow: 0px 0px 10px 5px #ddd;
-  background-color: #fff;
-  border-radius: 10px;
+}
+.toc-container {
+  display: none;
+  margin-top: 0;
   margin-bottom: 0;
-  max-height: 50vh;
+  width: 100%;
+for_breakpoint(mobile)
+}
+.toc-container .toc {
   overflow: auto;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  max-height: 60vh;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+for_breakpoint(mobile)
 }
-.toc ol {
+.toc-container ol {
   background-color: #fff;
+  padding-left: 1em;
 }
-.toc li {
+.toc-container li {
   list-style-type: none;
   line-height: 1.5;
   background-color: #fff;
   padding: 0;
+for_breakpoint(mobile)
 }
