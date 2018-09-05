@@ -1441,6 +1441,14 @@ html {
     margin-top: 2.5em;
   }
 }
+.article .article-meta .thumb-up-button,
+.page .article-meta .thumb-up-button {
+  cursor: pointer;
+}
+.article .article-meta .comment-button a:link,
+.page .article-meta .comment-button a:link {
+  color: #666;
+}
 .article .article-meta ul,
 .page .article-meta ul {
   display: block;

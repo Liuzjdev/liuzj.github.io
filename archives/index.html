@@ -50,7 +50,7 @@ crossorigin="anonymous"></script>
  
 
   <!-- load font awesome 5 -->
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -113,7 +113,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon active_dot'>
 				
-			<a href="/archives/" title='Archives'>
+			<a href="/archives/" title='Archivi'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -122,7 +122,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Search'>
+			<a href="/search/" title='Cerca'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -987,7 +987,7 @@ crossorigin="anonymous"></script>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.0.17-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> e <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Tema: <a href="https://liuzjdev.github.io/">Cutie 2.1.0-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -1011,7 +1011,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon active_dot'>
 				
-			<a href="/archives/" title='Archives'>
+			<a href="/archives/" title='Archivi'>
 			<img src="/images/icons/blue-shadow/archive.svg" alt="">
 			</a>
 		</div>
@@ -1020,7 +1020,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='Search'>
+			<a href="/search/" title='Cerca'>
 			<img src="/images/icons/blue-shadow/search.svg" alt="">
 			</a>
 		</div>
@@ -1227,8 +1227,10 @@ crossorigin="anonymous"></script>
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2018/07/28/华为8.0bug/', user_ip);
           leanCloud.fetchCommentCount('/2018/07/28/华为8.0bug/');
           leanCloud.fetchVisitCount('/2018/07/28/华为8.0bug/');
+          leanCloud.fetchThumbUpCount('/2018/07/28/华为8.0bug/');
           leanCloud.getCommentCount('/2018/07/28/华为8.0bug/', function(count){
               var el = document.querySelector('#hashit_fd61b8d29a327cb0aa3d6c4d06dd193834b4df0ec6d30f8981eb574f7e694c2d .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1237,12 +1239,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_fd61b8d29a327cb0aa3d6c4d06dd193834b4df0ec6d30f8981eb574f7e694c2d .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2018/07/28/华为8.0bug/', function(count){
+              var el = document.querySelector('#hashit_fd61b8d29a327cb0aa3d6c4d06dd193834b4df0ec6d30f8981eb574f7e694c2d .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2018/07/28/华为8.0bug/', function(isThumbUp){
+              var el = document.querySelector('#hashit_fd61b8d29a327cb0aa3d6c4d06dd193834b4df0ec6d30f8981eb574f7e694c2d .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2018/06/08/art与dalvik区别/', user_ip);
           leanCloud.fetchCommentCount('/2018/06/08/art与dalvik区别/');
           leanCloud.fetchVisitCount('/2018/06/08/art与dalvik区别/');
+          leanCloud.fetchThumbUpCount('/2018/06/08/art与dalvik区别/');
           leanCloud.getCommentCount('/2018/06/08/art与dalvik区别/', function(count){
               var el = document.querySelector('#hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1251,12 +1269,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2018/06/08/art与dalvik区别/', function(count){
+              var el = document.querySelector('#hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2018/06/08/art与dalvik区别/', function(isThumbUp){
+              var el = document.querySelector('#hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/', user_ip);
           leanCloud.fetchCommentCount('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/');
           leanCloud.fetchVisitCount('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/');
+          leanCloud.fetchThumbUpCount('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/');
           leanCloud.getCommentCount('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/', function(count){
               var el = document.querySelector('#hashit_7a62397934641a6ed5c87f393d160083d2661468db2792a5d1829263b08d2b4a .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1265,12 +1299,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_7a62397934641a6ed5c87f393d160083d2661468db2792a5d1829263b08d2b4a .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/', function(count){
+              var el = document.querySelector('#hashit_7a62397934641a6ed5c87f393d160083d2661468db2792a5d1829263b08d2b4a .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2018/05/09/仿QQ好友点赞效果，属性动画+贝塞尔曲线实现/', function(isThumbUp){
+              var el = document.querySelector('#hashit_7a62397934641a6ed5c87f393d160083d2661468db2792a5d1829263b08d2b4a .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2017/11/21/Git操作/', user_ip);
           leanCloud.fetchCommentCount('/2017/11/21/Git操作/');
           leanCloud.fetchVisitCount('/2017/11/21/Git操作/');
+          leanCloud.fetchThumbUpCount('/2017/11/21/Git操作/');
           leanCloud.getCommentCount('/2017/11/21/Git操作/', function(count){
               var el = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1279,12 +1329,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2017/11/21/Git操作/', function(count){
+              var el = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2017/11/21/Git操作/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2017/05/09/《Android开发艺术探索》第二章笔记/', user_ip);
           leanCloud.fetchCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
           leanCloud.fetchVisitCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
+          leanCloud.fetchThumbUpCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
           leanCloud.getCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
               var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1293,12 +1359,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
+              var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(isThumbUp){
+              var el = document.querySelector('#hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2017/05/03/手机连接电脑不读手机的终极解决方案/', user_ip);
           leanCloud.fetchCommentCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/');
           leanCloud.fetchVisitCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/');
+          leanCloud.fetchThumbUpCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/');
           leanCloud.getCommentCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/', function(count){
               var el = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1307,12 +1389,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2017/05/03/手机连接电脑不读手机的终极解决方案/', function(count){
+              var el = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2017/05/03/手机连接电脑不读手机的终极解决方案/', function(isThumbUp){
+              var el = document.querySelector('#hashit_ce73cdfd9b53e11743dad9dfc34a2d61a55dc68d1baf37f0b4b51e873db7d970 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/', user_ip);
           leanCloud.fetchCommentCount('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/');
           leanCloud.fetchVisitCount('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/');
+          leanCloud.fetchThumbUpCount('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/');
           leanCloud.getCommentCount('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/', function(count){
               var el = document.querySelector('#hashit_1f5d73ed10caa4feee763c7839d9435121f9c7d2bc73877677d7fb12ffae5cdc .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1321,12 +1419,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_1f5d73ed10caa4feee763c7839d9435121f9c7d2bc73877677d7fb12ffae5cdc .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/', function(count){
+              var el = document.querySelector('#hashit_1f5d73ed10caa4feee763c7839d9435121f9c7d2bc73877677d7fb12ffae5cdc .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2017/04/10/如何让程序返回桌面后，重新进入时不加载启动页/', function(isThumbUp){
+              var el = document.querySelector('#hashit_1f5d73ed10caa4feee763c7839d9435121f9c7d2bc73877677d7fb12ffae5cdc .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2017/03/02/EventBus使用笔记/', user_ip);
           leanCloud.fetchCommentCount('/2017/03/02/EventBus使用笔记/');
           leanCloud.fetchVisitCount('/2017/03/02/EventBus使用笔记/');
+          leanCloud.fetchThumbUpCount('/2017/03/02/EventBus使用笔记/');
           leanCloud.getCommentCount('/2017/03/02/EventBus使用笔记/', function(count){
               var el = document.querySelector('#hashit_6d08442a6301799cb28edeb1736fd1ba13a0f468cd1ce701dd46964c16af4a51 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1335,12 +1449,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_6d08442a6301799cb28edeb1736fd1ba13a0f468cd1ce701dd46964c16af4a51 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2017/03/02/EventBus使用笔记/', function(count){
+              var el = document.querySelector('#hashit_6d08442a6301799cb28edeb1736fd1ba13a0f468cd1ce701dd46964c16af4a51 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2017/03/02/EventBus使用笔记/', function(isThumbUp){
+              var el = document.querySelector('#hashit_6d08442a6301799cb28edeb1736fd1ba13a0f468cd1ce701dd46964c16af4a51 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/12/18/Android开发配置wifi调试教程/', user_ip);
           leanCloud.fetchCommentCount('/2016/12/18/Android开发配置wifi调试教程/');
           leanCloud.fetchVisitCount('/2016/12/18/Android开发配置wifi调试教程/');
+          leanCloud.fetchThumbUpCount('/2016/12/18/Android开发配置wifi调试教程/');
           leanCloud.getCommentCount('/2016/12/18/Android开发配置wifi调试教程/', function(count){
               var el = document.querySelector('#hashit_31464258bee59531fcf665daa145df2c11ad7f6d829aea4ee9e7ef638f0c3d52 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1349,12 +1479,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_31464258bee59531fcf665daa145df2c11ad7f6d829aea4ee9e7ef638f0c3d52 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2016/12/18/Android开发配置wifi调试教程/', function(count){
+              var el = document.querySelector('#hashit_31464258bee59531fcf665daa145df2c11ad7f6d829aea4ee9e7ef638f0c3d52 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/12/18/Android开发配置wifi调试教程/', function(isThumbUp){
+              var el = document.querySelector('#hashit_31464258bee59531fcf665daa145df2c11ad7f6d829aea4ee9e7ef638f0c3d52 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', user_ip);
           leanCloud.fetchCommentCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/');
           leanCloud.fetchVisitCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/');
+          leanCloud.fetchThumbUpCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/');
           leanCloud.getCommentCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', function(count){
               var el = document.querySelector('#hashit_b2a931d620d712d74a962c9ec8b924ade8e5adff1aa30e09829fbd87ffd90ed4 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1363,12 +1509,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_b2a931d620d712d74a962c9ec8b924ade8e5adff1aa30e09829fbd87ffd90ed4 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', function(count){
+              var el = document.querySelector('#hashit_b2a931d620d712d74a962c9ec8b924ade8e5adff1aa30e09829fbd87ffd90ed4 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/11/04/丢掉系统自带的矮挫丑Toast吧，打造属于你自己的Toast/', function(isThumbUp){
+              var el = document.querySelector('#hashit_b2a931d620d712d74a962c9ec8b924ade8e5adff1aa30e09829fbd87ffd90ed4 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/', user_ip);
           leanCloud.fetchCommentCount('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/');
           leanCloud.fetchVisitCount('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/');
+          leanCloud.fetchThumbUpCount('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/');
           leanCloud.getCommentCount('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/', function(count){
               var el = document.querySelector('#hashit_f811320dc66573601224be23a16f05831d53c8a0fccaa0b63487ad4970e91ca9 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1377,12 +1539,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_f811320dc66573601224be23a16f05831d53c8a0fccaa0b63487ad4970e91ca9 .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/', function(count){
+              var el = document.querySelector('#hashit_f811320dc66573601224be23a16f05831d53c8a0fccaa0b63487ad4970e91ca9 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/10/09/还在为右键没有svn菜单发愁？简单几步给你变出来/', function(isThumbUp){
+              var el = document.querySelector('#hashit_f811320dc66573601224be23a16f05831d53c8a0fccaa0b63487ad4970e91ca9 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', user_ip);
           leanCloud.fetchCommentCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/');
           leanCloud.fetchVisitCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/');
+          leanCloud.fetchThumbUpCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/');
           leanCloud.getCommentCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(count){
               var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1391,12 +1569,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(count){
+              var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(isThumbUp){
+              var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/09/06/Android Studio SVN使用手册/', user_ip);
           leanCloud.fetchCommentCount('/2016/09/06/Android Studio SVN使用手册/');
           leanCloud.fetchVisitCount('/2016/09/06/Android Studio SVN使用手册/');
+          leanCloud.fetchThumbUpCount('/2016/09/06/Android Studio SVN使用手册/');
           leanCloud.getCommentCount('/2016/09/06/Android Studio SVN使用手册/', function(count){
               var el = document.querySelector('#hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1405,12 +1599,28 @@ crossorigin="anonymous"></script>
               var el = document.querySelector('#hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba .card-visit-count');
               if(el) el.innerHTML = count;
           });
+          leanCloud.getThumbUpCount('/2016/09/06/Android Studio SVN使用手册/', function(count){
+              var el = document.querySelector('#hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/09/06/Android Studio SVN使用手册/', function(isThumbUp){
+              var el = document.querySelector('#hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
           // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/05/08/Activity总结/', user_ip);
           leanCloud.fetchCommentCount('/2016/05/08/Activity总结/');
           leanCloud.fetchVisitCount('/2016/05/08/Activity总结/');
+          leanCloud.fetchThumbUpCount('/2016/05/08/Activity总结/');
           leanCloud.getCommentCount('/2016/05/08/Activity总结/', function(count){
               var el = document.querySelector('#hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194 .card-comment-count');
               if(el) el.innerHTML = count;
@@ -1418,6 +1628,20 @@ crossorigin="anonymous"></script>
           leanCloud.getVisitCount('/2016/05/08/Activity总结/', function(count){
               var el = document.querySelector('#hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194 .card-visit-count');
               if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2016/05/08/Activity总结/', function(count){
+              var el = document.querySelector('#hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/05/08/Activity总结/', function(isThumbUp){
+              var el = document.querySelector('#hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
           });
         
       }

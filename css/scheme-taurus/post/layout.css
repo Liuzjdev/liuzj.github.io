@@ -81,6 +81,14 @@ for_breakpoint(mobile)
   font-size: 0.8em;
   width: 100%;
 }
+.article .article-meta .thumb-up-button,
+.page .article-meta .thumb-up-button {
+  cursor: pointer;
+}
+.article .article-meta .comment-button a:link,
+.page .article-meta .comment-button a:link {
+  color: #666;
+}
 .article .article-meta ul,
 .page .article-meta ul {
   display: block;
