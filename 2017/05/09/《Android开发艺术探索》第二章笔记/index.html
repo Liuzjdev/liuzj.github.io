@@ -376,8 +376,8 @@ Inter-Process...</p>
 <li>Serializable</li>
 </ul>
 <p>是Java所提供的一个序列化接口，它是一个空接口，为对象提供标准的序列化和反序列化操作。使用Serializable来实现序列化相当简单，只需要在类的声明中指定一个类似下面的标识即可自动实现默认的序列化过程。</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8711368828010083044</span>L</span><br></pre></td></tr></table></figure>
-<p>通过Serializable方来实现对象的序列化，如下代码：<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//序列化过程</span></span><br><span class="line">User user = <span class="keyword">new</span> <span class="type">User</span>(<span class="number">0</span>, <span class="string">"jake"</span>, <span class="literal">true</span>);</span><br><span class="line">ObjectOutputStream out = <span class="keyword">new</span> <span class="type">ObjectOutputStream</span>(<span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"cache.txt"</span>));</span><br><span class="line">out.writeObject(user);</span><br><span class="line">out.close();</span><br><span class="line"></span><br><span class="line"><span class="comment">//反序列化过程</span></span><br><span class="line">ObjectInputStream <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">ObjectInputStream</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"cache.txt"</span>));</span><br><span class="line">User <span class="keyword">new</span><span class="type">User</span> = (User)<span class="keyword">in</span>.readObject();</span><br><span class="line"><span class="keyword">in</span>.close();</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private static final long serialVersionUID = 8711368828010083044L</span><br></pre></td></tr></table></figure>
+<p>通过Serializable方来实现对象的序列化，如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//序列化过程</span><br><span class="line">User user = new User(0, &quot;jake&quot;, true);</span><br><span class="line">ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(&quot;cache.txt&quot;));</span><br><span class="line">out.writeObject(user);</span><br><span class="line">out.close();</span><br><span class="line"></span><br><span class="line">//反序列化过程</span><br><span class="line">ObjectInputStream in = new ObjectInputStream(new FileInputStream(&quot;cache.txt&quot;));</span><br><span class="line">User newUser = (User)in.readObject();</span><br><span class="line">in.close();</span><br></pre></td></tr></table></figure></p>
 <p>原则上序列化后的数据中的serialVersionUID只有和当前类的serialVersionUID相同时才能够正常的被反序列化。serialVersionUID的详细工作机制是这样的：序列化的时候系统会把当前类的serialVersionUID写入序列化的文件中（也可能是其他的中介），当反序列化的时候系统会去检测文件中的serialVersionUID，看它是否和当前类的serialVersionUID一致，如果一致就说明序列化的类的版本和当前类的版本是相同的，这个时候可以成功反序列化，否则就说明当前类和序列化的类相比发生了某些变换</p>
 <p>给serialVersionUID制定为1L或者采用Eclipse根据当前类结构去生成的hash值，这两者并没有本质区别。</p>
 <ul>
@@ -442,9 +442,9 @@ Inter-Process...</p>
 <li>linkToDeath</li>
 <li>unlinkToDeath<br>Binder运行在服务端，如果由于某种服务端异常终止了的话会导致客户端的远程调用失败、所以Binder提供了两个配对的方法linkToDeath和unlinkToDeath，通过linkToDeath方法可以给Binder设置一个死亡代理，当Binder死亡的时候客户端就会收到通知，然后就可以重新发起连接从而恢复连接了。<h3 id="如何给Binder设置死亡代理"><a href="#如何给Binder设置死亡代理" class="headerlink" title="如何给Binder设置死亡代理"></a>如何给Binder设置死亡代理</h3>1、声明一个DeathRecipient对象、DeathRecipient是一个接口，其内部只有一个方法bindDied，实现这个方法就可以在Binder死亡的时候收到通知了。</li>
 </ol>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> IBinder.DeathRecipient mDeathRecipient = <span class="keyword">new</span> IBinder.DeathRecipient() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">binderDied</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mRemoteBookManager == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        mRemoteBookManager.asBinder().unlinkToDeath(mDeathRecipient, <span class="number">0</span>);</span><br><span class="line">        mRemoteBookManager = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span>这里重新绑定远程Service</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void binderDied() &#123;</span><br><span class="line">        if (mRemoteBookManager == null) return;</span><br><span class="line">        mRemoteBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);</span><br><span class="line">        mRemoteBookManager = null;</span><br><span class="line">        // TODO:这里重新绑定远程Service</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>2、在客户端绑定远程服务成功之后，给binder设置死亡代理</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">mRemoteBookManager</span><span class="selector-class">.asBinder</span>()<span class="selector-class">.linkToDeath</span>(<span class="selector-tag">mDeathRecipient</span>, 0);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mRemoteBookManager.asBinder().linkToDeath(mDeathRecipient, 0);</span><br></pre></td></tr></table></figure>
 <h2 id="Android的IPC方式"><a href="#Android的IPC方式" class="headerlink" title="Android的IPC方式"></a>Android的IPC方式</h2><p>1、 使用Bundle</p>
 <p>Bundle实现了Parcelable接口，Activity、Service和Receiver都支持在Intent中传递Bundle数据</p>
 <p>2、 使用文件共享</p>
@@ -492,7 +492,7 @@ Inter-Process...</p>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.1.0-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.1.1-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -615,32 +615,33 @@ Inter-Process...</p>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741').update('hashit_bb4b016318db842ed38f78873c0baffc9dd93e96b685bb5b9ff5ecfffbd6a844', function(){});
+    new Postv2('hashit_a1622ec9174a39f7e2287346dde9397036ca0c58229bfe3ee56d95ed6c4b6741').update('hashit_d45b94c18d4f50918787876889305fe42ce0ba17a8f554e1b9ae9623c1f7f920', function(){});
   });
   
 </script>
 
 
-    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+    
 <script type='text/javascript'>
   
   // update cookie if this page is opened (directly)
+  function getIP(json) {
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
   loadjs.ready('post-visit-comment-count', function(){
     
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2017/05/09/《Android开发艺术探索》第二章笔记/', user_ip);
+    leanCloud.fetchIsThumbUp('/2017/05/09/《Android开发艺术探索》第二章笔记/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
       leanCloud.isThumbUp('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2017/05/09/《Android开发艺术探索》第二章笔记/', user_ip);
+          leanCloud.removeThumbUpRecord('/2017/05/09/《Android开发艺术探索》第二章笔记/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2017/05/09/《Android开发艺术探索》第二章笔记/', user_ip);
+          leanCloud.addThumbUpRecord('/2017/05/09/《Android开发艺术探索》第二章笔记/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
         leanCloud.getThumbUpCount('/2017/05/09/《Android开发艺术探索》第二章笔记/', function(count){
@@ -650,7 +651,7 @@ Inter-Process...</p>
         });
       });
     });
-    leanCloud.addVisitRecord('/2017/05/09/《Android开发艺术探索》第二章笔记/', user_ip);
+    leanCloud.addVisitRecord('/2017/05/09/《Android开发艺术探索》第二章笔记/', json.ip);
     leanCloud.fetchCommentCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
     leanCloud.fetchVisitCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
     leanCloud.fetchThumbUpCount('/2017/05/09/《Android开发艺术探索》第二章笔记/');
@@ -675,8 +676,12 @@ Inter-Process...</p>
         }
     });
   });
+  }
   
 </script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
 
 
 <!-- <script src="/js/post.js"></script> -->

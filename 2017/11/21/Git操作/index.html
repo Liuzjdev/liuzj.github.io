@@ -347,59 +347,59 @@ crossorigin="anonymous"></script>
     <h2 id="git-命令"><a href="#git-命令" class="headerlink" title="git 命令"></a>git 命令</h2><ul>
 <li>创建本地仓库</li>
 </ul>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 <ul>
 <li>获取远程仓库</li>
 </ul>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">[url</span>]</span><br><span class="line">例：git <span class="keyword">clone</span> <span class="title">https</span>://github.com/you/yourpro.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br><span class="line">例：git clone https://github.com/you/yourpro.git</span><br></pre></td></tr></table></figure>
 <ul>
 <li>创建远程仓库</li>
 </ul>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加一个新的 remote 远程仓库</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">add</span> <span class="selector-attr">[remote-name]</span> <span class="selector-attr">[url]</span></span><br><span class="line">例：<span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">add</span> <span class="selector-tag">origin</span> <span class="selector-tag">https</span>:<span class="comment">//github.com/you/yourpro.git</span></span><br><span class="line"><span class="selector-tag">origin</span>：相当于该远程仓库的别名</span><br><span class="line"></span><br><span class="line"><span class="comment">// 列出所有 remote 的别名</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 列出所有 remote 的 url</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">-v</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一个 renote</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">rm</span> <span class="selector-attr">[name]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重命名 remote</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">remote</span> <span class="selector-tag">rename</span> <span class="selector-attr">[old-name]</span> <span class="selector-attr">[new-name]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 添加一个新的 remote 远程仓库</span><br><span class="line">git remote add [remote-name] [url]</span><br><span class="line">例：git remote add origin https://github.com/you/yourpro.git</span><br><span class="line">origin：相当于该远程仓库的别名</span><br><span class="line"></span><br><span class="line">// 列出所有 remote 的别名</span><br><span class="line">git remote</span><br><span class="line"></span><br><span class="line">// 列出所有 remote 的 url</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">// 删除一个 renote</span><br><span class="line">git remote rm [name]</span><br><span class="line"></span><br><span class="line">// 重命名 remote</span><br><span class="line">git remote rename [old-name] [new-name]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从本地仓库中删除</li>
 </ul>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">rm</span> <span class="keyword">file</span>.txt         <span class="comment">// 从版本库中移除，删除文件</span></span><br><span class="line">git <span class="keyword">rm</span> <span class="keyword">file</span>.txt -cached <span class="comment">// 从版本库中移除，不删除原始文件</span></span><br><span class="line">git <span class="keyword">rm</span> -r xxx           <span class="comment">// 从版本库中删除指定文件夹</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm file.txt         // 从版本库中移除，删除文件</span><br><span class="line">git rm file.txt -cached // 从版本库中移除，不删除原始文件</span><br><span class="line">git rm -r xxx           // 从版本库中删除指定文件夹</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从本地仓库中添加新的文件</li>
 </ul>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .               // 添加所有文件</span></span><br><span class="line"><span class="bash">git add file.txt        // 添加指定文件</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .               // 添加所有文件</span><br><span class="line">git add file.txt        // 添加指定文件</span><br></pre></td></tr></table></figure>
 <ul>
 <li>提交，把缓存内容提交到 HEAD 里</li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"注释"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;注释&quot;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>撤销</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 撤销最近的一个提交.</span><br><span class="line">git revert HEAD</span><br><span class="line"></span><br><span class="line">// 取消 <span class="keyword">commit</span> + <span class="keyword">add</span></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--mixed</span></span><br><span class="line"></span><br><span class="line">// 取消 <span class="keyword">commit</span></span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft</span></span><br><span class="line"></span><br><span class="line">// 取消 <span class="keyword">commit</span> + <span class="keyword">add</span> + <span class="keyword">local</span> working</span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 撤销最近的一个提交.</span><br><span class="line">git revert HEAD</span><br><span class="line"></span><br><span class="line">// 取消 commit + add</span><br><span class="line">git reset --mixed</span><br><span class="line"></span><br><span class="line">// 取消 commit</span><br><span class="line">git reset --soft</span><br><span class="line"></span><br><span class="line">// 取消 commit + add + local working</span><br><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
 <ul>
 <li>把本地提交 push 到远程服务器</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-attr">[remote-name]</span> <span class="selector-attr">[loca-branch]</span>:<span class="selector-attr">[remote-branch]</span></span><br><span class="line">例：<span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> <span class="selector-tag">master</span><span class="selector-pseudo">:master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [loca-branch]:[remote-branch]</span><br><span class="line">例：git push origin master:master</span><br></pre></td></tr></table></figure>
 <ul>
 <li>查看状态</li>
 </ul>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从远程库中下载新的改动</li>
 </ul>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch <span class="string">[remote-name]</span>/<span class="string">[branch]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [remote-name]/[branch]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>合并下载的改动到分支</li>
 </ul>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge <span class="string">[remote-name]</span>/<span class="string">[branch]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge [remote-name]/[branch]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从远程库中下载新的改动</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pull = fetch + <span class="keyword">merge</span></span><br><span class="line"></span><br><span class="line">git pull [remote-<span class="keyword">name</span>] [branch]</span><br><span class="line">例：git pull origin <span class="keyword">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pull = fetch + merge</span><br><span class="line"></span><br><span class="line">git pull [remote-name] [branch]</span><br><span class="line">例：git pull origin master</span><br></pre></td></tr></table></figure>
 <ul>
 <li>分支</li>
 </ul>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 列出分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新的分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> (branch-name)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一个分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-tag">-d</span> (branch-nam)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除 remote 的分支</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> (remote-name) <span class="selector-pseudo">:(remote-branch)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 列出分支</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line">// 创建一个新的分支</span><br><span class="line">git branch (branch-name)</span><br><span class="line"></span><br><span class="line">// 删除一个分支</span><br><span class="line">git branch -d (branch-nam)</span><br><span class="line"></span><br><span class="line">// 删除 remote 的分支</span><br><span class="line">git push (remote-name) :(remote-branch)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>切换分支</li>
 </ul>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换到一个分支</span></span><br><span class="line">git checkout [branch-<span class="keyword">name</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建并切换到该分支</span></span><br><span class="line">git checkout -b [branch-<span class="keyword">name</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 切换到一个分支</span><br><span class="line">git checkout [branch-name]</span><br><span class="line"></span><br><span class="line">// 创建并切换到该分支</span><br><span class="line">git checkout -b [branch-name]</span><br></pre></td></tr></table></figure>
 <h2 id="与github建立ssh通信，让Git操作免去输入密码的繁琐。"><a href="#与github建立ssh通信，让Git操作免去输入密码的繁琐。" class="headerlink" title="与github建立ssh通信，让Git操作免去输入密码的繁琐。"></a>与github建立ssh通信，让Git操作免去输入密码的繁琐。</h2><ul>
 <li><p>首先呢，我们先建立ssh密匙。</p>
 <blockquote>
@@ -416,7 +416,7 @@ crossorigin="anonymous"></script>
 </ul>
 <h2 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h2><hr>
 <p>在本地仓库根目录创建 .gitignore 文件,可以github搜索gitignore，然后下载对应的文件丢到自己项目里即可。Win7 下不能直接创建，可以创建 “.gitignore.” 文件，后面的标点自动被忽略；</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/.idea</span>          <span class="string">//</span> 过滤指定文件夹</span><br><span class="line"><span class="string">/fd/</span>*           <span class="string">//</span> 忽略根目录下的 <span class="string">/fd/</span> 目录的全部内容；</span><br><span class="line">*<span class="string">.iml</span>           <span class="string">//</span> 过滤指定的所有文件</span><br><span class="line">!<span class="string">.gitignore</span>     <span class="string">//</span> 不忽略该文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/.idea          // 过滤指定文件夹</span><br><span class="line">/fd/*           // 忽略根目录下的 /fd/ 目录的全部内容；</span><br><span class="line">*.iml           // 过滤指定的所有文件</span><br><span class="line">!.gitignore     // 不忽略该文件</span><br></pre></td></tr></table></figure>
 
     
     </div>
@@ -443,7 +443,7 @@ crossorigin="anonymous"></script>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.1.0-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.1.1-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -566,32 +566,33 @@ crossorigin="anonymous"></script>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5').update('hashit_ff99135ca3488f156f821d66bf374554d8a06245c67cbd6901c9cf6fa2d337a2', function(){});
+    new Postv2('hashit_ae63a1c95e30d9a599e4a53103eace5d7f741e46b95d6342ec1e1db809b615a5').update('hashit_1beb8b0ef00a8880c44e1ed5009839258ee8424f7788dcca76b9a325e096bcee', function(){});
   });
   
 </script>
 
 
-    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+    
 <script type='text/javascript'>
   
   // update cookie if this page is opened (directly)
+  function getIP(json) {
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
   loadjs.ready('post-visit-comment-count', function(){
     
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2017/11/21/Git操作/', user_ip);
+    leanCloud.fetchIsThumbUp('/2017/11/21/Git操作/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
       leanCloud.isThumbUp('/2017/11/21/Git操作/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2017/11/21/Git操作/', user_ip);
+          leanCloud.removeThumbUpRecord('/2017/11/21/Git操作/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2017/11/21/Git操作/', user_ip);
+          leanCloud.addThumbUpRecord('/2017/11/21/Git操作/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
         leanCloud.getThumbUpCount('/2017/11/21/Git操作/', function(count){
@@ -601,7 +602,7 @@ crossorigin="anonymous"></script>
         });
       });
     });
-    leanCloud.addVisitRecord('/2017/11/21/Git操作/', user_ip);
+    leanCloud.addVisitRecord('/2017/11/21/Git操作/', json.ip);
     leanCloud.fetchCommentCount('/2017/11/21/Git操作/');
     leanCloud.fetchVisitCount('/2017/11/21/Git操作/');
     leanCloud.fetchThumbUpCount('/2017/11/21/Git操作/');
@@ -626,8 +627,12 @@ crossorigin="anonymous"></script>
         }
     });
   });
+  }
   
 </script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
 
 
 <!-- <script src="/js/post.js"></script> -->

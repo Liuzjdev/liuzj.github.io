@@ -362,7 +362,7 @@ crossorigin="anonymous"></script>
     <div class='footer-copyright'>
         <div>
             <p> Copyright by <a href="">Liuzj </a> @ 2018</p>
-            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.1.0-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://liuzjdev.github.io/">Cutie 2.1.1-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -491,26 +491,27 @@ crossorigin="anonymous"></script>
 </script>
 
 
-    <script type="text/javascript" src="https://l2.io/ip.js?var=user_ip"></script>
+    
 <script type='text/javascript'>
   
   // update cookie if this page is opened (directly)
+  function getIP(json) {
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/leancloud.js'], 'post-visit-comment-count');
   loadjs.ready('post-visit-comment-count', function(){
     
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2017/03/02/EventBus使用笔记/', user_ip);
+    leanCloud.fetchIsThumbUp('/2017/03/02/EventBus使用笔记/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
       leanCloud.isThumbUp('/2017/03/02/EventBus使用笔记/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2017/03/02/EventBus使用笔记/', user_ip);
+          leanCloud.removeThumbUpRecord('/2017/03/02/EventBus使用笔记/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2017/03/02/EventBus使用笔记/', user_ip);
+          leanCloud.addThumbUpRecord('/2017/03/02/EventBus使用笔记/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
         leanCloud.getThumbUpCount('/2017/03/02/EventBus使用笔记/', function(count){
@@ -520,7 +521,7 @@ crossorigin="anonymous"></script>
         });
       });
     });
-    leanCloud.addVisitRecord('/2017/03/02/EventBus使用笔记/', user_ip);
+    leanCloud.addVisitRecord('/2017/03/02/EventBus使用笔记/', json.ip);
     leanCloud.fetchCommentCount('/2017/03/02/EventBus使用笔记/');
     leanCloud.fetchVisitCount('/2017/03/02/EventBus使用笔记/');
     leanCloud.fetchThumbUpCount('/2017/03/02/EventBus使用笔记/');
@@ -545,8 +546,12 @@ crossorigin="anonymous"></script>
         }
     });
   });
+  }
   
 </script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
 
 
 <!-- <script src="/js/post.js"></script> -->
