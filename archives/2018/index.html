@@ -166,6 +166,56 @@ crossorigin="anonymous"></script>
 
 
 
+<div class='Card-archive' id='hashit_9e537036a705dc08376ef22a2c4a21a1b8865cb26e8b7286fc6c9eb6cd2b976e' data-name='仿QQ邮箱加载动画' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2018/09/20/仿QQ邮箱加载动画/">
+			
+			仿QQ邮箱加载动画</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/自定义View/">自定义view</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2018-09-20
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2018/09/20/仿QQ邮箱加载动画/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_858ac100dd8a4d195f1f33cb3f8ababd3e35af00dbc681f3a9e10d794898ca98' data-name='Linux服务器清理' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -517,6 +567,14 @@ crossorigin="anonymous"></script>
           
           
           
+            var postBadge = document.querySelector('#hashit_9e537036a705dc08376ef22a2c4a21a1b8865cb26e8b7286fc6c9eb6cd2b976e mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
             var postBadge = document.querySelector('#hashit_858ac100dd8a4d195f1f33cb3f8ababd3e35af00dbc681f3a9e10d794898ca98 mark.Card-badge');
             $(postBadge).fadeOut();
             
@@ -561,6 +619,36 @@ crossorigin="anonymous"></script>
       success: function(){
           LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2018/09/20/仿QQ邮箱加载动画/', json.ip);
+          leanCloud.fetchCommentCount('/2018/09/20/仿QQ邮箱加载动画/');
+          leanCloud.fetchVisitCount('/2018/09/20/仿QQ邮箱加载动画/');
+          leanCloud.fetchThumbUpCount('/2018/09/20/仿QQ邮箱加载动画/');
+          leanCloud.getCommentCount('/2018/09/20/仿QQ邮箱加载动画/', function(count){
+              var el = document.querySelector('#hashit_9e537036a705dc08376ef22a2c4a21a1b8865cb26e8b7286fc6c9eb6cd2b976e .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2018/09/20/仿QQ邮箱加载动画/', function(count){
+              var el = document.querySelector('#hashit_9e537036a705dc08376ef22a2c4a21a1b8865cb26e8b7286fc6c9eb6cd2b976e .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2018/09/20/仿QQ邮箱加载动画/', function(count){
+              var el = document.querySelector('#hashit_9e537036a705dc08376ef22a2c4a21a1b8865cb26e8b7286fc6c9eb6cd2b976e .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2018/09/20/仿QQ邮箱加载动画/', function(isThumbUp){
+              var el = document.querySelector('#hashit_9e537036a705dc08376ef22a2c4a21a1b8865cb26e8b7286fc6c9eb6cd2b976e .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
