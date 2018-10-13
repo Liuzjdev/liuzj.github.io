@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>Activity总结 - Liuzj的博客</title>
+      <title>项目合并 - Liuzj的博客</title>
   
 
   
@@ -115,7 +115,7 @@ crossorigin="anonymous"></script>
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心"><span class="toc-number">1.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心-1"><span class="toc-number">2.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心-2"><span class="toc-number">3.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -206,14 +206,14 @@ crossorigin="anonymous"></script>
 
 
 
-<article class="article" id="/2016/05/08/Activity总结/" data-name='Activity总结' data-version="">
+<article class="article" id="/2018/10/14/项目合并/" data-name='项目合并' data-version="">
 
     <!-- Title -->
     <div class='article-header'>
          
          <h1 class='article-title'>
-            <a href="/2016/05/08/Activity总结/">
-                Activity总结
+            <a href="/2018/10/14/项目合并/">
+                项目合并
             </a>
         </h1>
         <!-- TODO: support nested categories,display them nicely -->
@@ -223,7 +223,7 @@ crossorigin="anonymous"></script>
     <!-- Date and Author -->
     <div class='article-meta'>
     <ul>
-            <li><i class='fa fa-calendar'></i> 2016-05-08</li>
+            <li><i class='fa fa-calendar'></i> 2018-10-14</li>
             
             <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
             <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
@@ -244,11 +244,11 @@ crossorigin="anonymous"></script>
 <div class="tags">
 	
 		
-			<label class='tag-1'><a href="/tags/Activity/">Activity</a></label>
+			<label class='tag-1'><a href="/tags/踩坑/">踩坑</a></label>
 		
 	
 		
-			<label class='tag-2'><a href="/tags/四大组件/">四大组件</a></label>
+			<label class='tag-2'><a href="/tags/项目合并/">项目合并</a></label>
 		
 	
 	</div>
@@ -307,7 +307,14 @@ crossorigin="anonymous"></script>
   <h3>Quick Read</h3>
 </div>
 <div class="card-text">
-  <p id='text-post-summary'>...</p>
+  <p id='text-post-summary'>遇到这个任务 请务必静下心遇到这个任务 请务必静下心遇到这个任务 请务必静下心命令行查看更多错误信息编译时打印详细信息gradle build --info
+gradle build --stacktrace
+当然也能这么用
+gradle build --stacktrace --info
+运行时gradle assembledebug --stacktrace --info
+错误一、Program type already present这类问题出现得原因大多都是引用的第三方依赖重复，遇到这类问题需要别烦躁，细心找出重复得依赖删除即可消除这类问题，这里提供一种方式
+
+错误二、More...</p>
 </div>
         </div> -->
     </div>
@@ -325,7 +332,7 @@ crossorigin="anonymous"></script>
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心"><span class="toc-number">1.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心-1"><span class="toc-number">2.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心-2"><span class="toc-number">3.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -333,86 +340,30 @@ crossorigin="anonymous"></script>
 
     </div>
     <div class='article-content'>
-    <p>看了标题也许你会想，也许你会说，activity我天天用，我最了解不过了，没有什么是我不清楚的。你怕是在唬我吧？那下面就看看我说的这些你都了解嘛</p>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
-<li><h4 id="正常情况下的生命周期"><a href="#正常情况下的生命周期" class="headerlink" title="正常情况下的生命周期"></a>正常情况下的生命周期</h4><ul>
-<li><p>onCreate：表示Activity正在被创建，我们可以做一些初始化工作，没啥子可说的。</p>
-</li>
-<li><p>onRestart：当当前Activity从不可见重新变为可见状态时，该方法会被调用。</p>
-</li>
-<li><p>onStart：这时Activity已经可见的，但是处于后台，无法和用户交互。</p>
-</li>
-<li><p>onResume：这时Activity已经可见的，但是处于前台。</p>
-</li>
-<li><p>onPause：在这个方法可以做一些存储数据，停止动画的操作，但是不能太耗时，因为这会影响到新Activity的显示，onPause必须执行完，新Activity的onResume才会执行。</p>
-</li>
-<li><p>onStop:Activity即将停止，可以做一些稍微重量级的回收工作，同样不能太耗时。</p>
-</li>
-<li><p>onDestory:表示Activity即将销毁，我们可以做一些回收工作和资源释放工作。</p>
-<p>Activity第一次启动会调用onCreate–&gt;onStart–&gt;onResume,当用户打开新的Activity或者切换到桌面的时候，会调用onPause–&gt;onStop，<em>如果这个Activity采用透明主题，不会调用onStop,是因为新Activity透明主题我们还能看到下面那个之前Activity，所以不会调用onStop</em>，再回到原Activity时调用onRestart–&gt;onStart–&gt;onResume.</p>
-</li>
-</ul>
-</li>
-<li><h4 id="异常情况下的生命周期"><a href="#异常情况下的生命周期" class="headerlink" title="异常情况下的生命周期"></a>异常情况下的生命周期</h4><ul>
-<li><p>资源相关的系统配置发生改变导致Avtivity被杀死并重新创建</p>
-</li>
-<li><p>资源不足时导致优先级低的Activity被杀死</p>
-</li>
-<li><p>…</p>
-<p><em>Activity会调用onSaveInstanceState方法，系统自动为我们做了一定的恢复工作，并且重启为我们恢复这些数据，比如文本框中用户输入的数据，listView滚动位置等，具体的我们可以查看特定View的源码。</em></p>
-</li>
-</ul>
-</li>
-<li><h4 id="Activity的启动模式"><a href="#Activity的启动模式" class="headerlink" title="Activity的启动模式"></a>Activity的启动模式</h4><p>  1、使用场景</p>
-<ul>
-<li><p>standard：当需要每次请求都新开一个实例的时候，比如，浏览器开多个浏览窗口。</p>
-</li>
-<li><p>singleTop：适合作为接受通知的启动界面，比如，客户端收到10条推送，如果是标准模式，分别点击这10个推送，就会启动10个这样的显示内容的界面，而如果是singleTop，则只会打开一个显示界面。</p>
-</li>
-<li><p>singleTask：适合作为程序的入口，不管其他程序打开该界面多少次，都只会在任务栈中存在一份，比如浏览器的启动界面。</p>
-</li>
-<li><p>singleInstance：适合永远都不会变化的界面，比如闹钟的提醒界面，在比如拨号程序的呼叫界面。</p>
-<p>2、IntentFilter的匹配规则</p>
-</li>
-<li><p>action的匹配规则：要求Intent中的action存在且必须和过滤规则中的其中一个action相同，这个区分大小写，如果相同的字符串，大小写字母不同，action会匹配失败。</p>
-</li>
-<li><p>category匹配规则：这个可有可无，如果有，则必须和过滤规则中的其中一个category相同，如果不写的话，在启动Activity时系统会自动加上”android.intent.category.DEFAULT”</p>
-</li>
-<li><p>data可进一步分为uri（由scheme、host、port、path | pathPattern | pathPrefix这4部分组成）和mimetype。Intent的uri可通过setData方法设置，mimetype可通过setType方法设置。隐式Intent也必须指定data。同action类似，只要Intent的data只要与Intent Filter中的任一个data声明完全相同，data方面就匹配成功。需要注意的是：若Intent Filter的data声明部分未指定uri，则缺省uri为content或file，Intent中的uri的scheme部分需为content或file才能匹配；若要为Intent指定完整的data，必须用setDataAndType方法，原因请看setData和setType方法的源码：</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>
-public Intent setData(Uri data) {
-    mData = data;
-    mType = null;
-    return this;
+    <h2 id="遇到这个任务-请务必静下心"><a href="#遇到这个任务-请务必静下心" class="headerlink" title="遇到这个任务 请务必静下心"></a>遇到这个任务 请务必静下心</h2><h2 id="遇到这个任务-请务必静下心-1"><a href="#遇到这个任务-请务必静下心-1" class="headerlink" title="遇到这个任务 请务必静下心"></a>遇到这个任务 请务必静下心</h2><h2 id="遇到这个任务-请务必静下心-2"><a href="#遇到这个任务-请务必静下心-2" class="headerlink" title="遇到这个任务 请务必静下心"></a>遇到这个任务 请务必静下心</h2><h3 id="命令行查看更多错误信息"><a href="#命令行查看更多错误信息" class="headerlink" title="命令行查看更多错误信息"></a>命令行查看更多错误信息</h3><h4 id="编译时打印详细信息"><a href="#编译时打印详细信息" class="headerlink" title="编译时打印详细信息"></a>编译时打印详细信息</h4><pre><code>gradle build --info
+gradle build --stacktrace
+</code></pre><p>当然也能这么用</p>
+<pre><code>gradle build --stacktrace --info
+</code></pre><h4 id="运行时"><a href="#运行时" class="headerlink" title="运行时"></a>运行时</h4><pre><code>gradle assembledebug --stacktrace --info
+</code></pre><h3 id="错误一、Program-type-already-present"><a href="#错误一、Program-type-already-present" class="headerlink" title="错误一、Program type already present"></a>错误一、Program type already present</h3><p>这类问题出现得原因大多都是引用的第三方依赖重复，遇到这类问题需要别烦躁，细心找出重复得依赖删除即可消除这类问题，这里提供一种方式</p>
+<p><img src="https://i.imgur.com/hNs6bGO.png" alt=""></p>
+<h3 id="错误二、More-than-one-file-was-found-with-OS-independent-path"><a href="#错误二、More-than-one-file-was-found-with-OS-independent-path" class="headerlink" title="错误二、More than one file was found with OS independent path"></a>错误二、More than one file was found with OS independent path</h3><pre><code>android {
+   ---
+   packagingOptions {
+        pickFirst &apos;lib/x86_64/替换成你错误中.so&apos;
+        pickFirst &apos;lib/armeabi/替换成你错误中.so&apos;
+        pickFirst &apos;lib/x86/替换成你错误中.so&apos;
+        pickFirst &apos;lib/armeabi-v7a/替换成你错误中.so&apos;
+        pickFirst &apos;lib/arm64-v8a/替换成你错误中.so&apos;
+    }
+   ---
 }
-
-public Intent setType(String type) {
-    mData = null;
-    mType = type;
-    return this;
-}
-</code></pre>
-
-<p>从以上代码可以看到，setData会把mimeType置为null，setType会把uri置为null。下面我们来举例说明一下data的匹配。首先我们先来看一下Intent Filter中指定data的语法：</p>
-<pre><code>&lt;data android:scheme=&quot;...“ 
-      android:host=&quot;...&quot;
-      android:port=&quot;...&quot;
-      android:path=&quot;...&quot;
-      android:pathPattern=&quot;...&quot;
-      android:pathPrefix=&quot;...&quot;
-      android:mimeType=&quot;...&quot; /&gt;
-</code></pre><p>其中scheme、host等各个部分无需全部指定。假如我们为MyActivity的Intent Filter指定了如下data：</p>
-<pre><code>&lt;intent-filter&gt;
-    &lt;data android:mimeType=&quot;vidoe/mpeg&quot; android:scheme=&quot;http&quot; android:host=&quot;www.xxx.com&quot; /&gt;
-    &lt;data android:mimeType=&quot;text/plain&quot; android:scheme=&quot;http&quot; /&gt;
-&lt;/intent-filter&gt;
-</code></pre><p>那么我们的Intent想要匹配，mimeType可以为”text/plain”或“video/mpeg”,scheme必须为”http“，host则没有限制，因为第二个data没有指定host。</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p><em>这就是我知道的关于activity的一些知识，若有叙述不清晰或是不准确的地方希望大家指出，如果你知道更多知识，欢迎给我评论，大家一起学习进步。谢谢观看</em></p>
-<h4 id="参考资料-《Android开发艺术探索》"><a href="#参考资料-《Android开发艺术探索》" class="headerlink" title="参考资料 《Android开发艺术探索》"></a>参考资料 《Android开发艺术探索》</h4>
+</code></pre><h3 id="错误三、aapt-error"><a href="#错误三、aapt-error" class="headerlink" title="错误三、aapt error"></a>错误三、aapt error</h3><p>在gradle.properties中加入下面这行代码，处理了我的这个问题</p>
+<pre><code>android.enableAapt2=true
+</code></pre><h3 id="错误四、finished-with-non-zero-exit-value-1"><a href="#错误四、finished-with-non-zero-exit-value-1" class="headerlink" title="错误四、finished with non-zero exit value 1"></a>错误四、finished with non-zero exit value 1</h3><p>敲命令，找带error的错误，然后处理</p>
+<pre><code>gradlew processDebugResources --debug
+</code></pre><p><img src="https://i.imgur.com/0Oy82g2.png" alt=""></p>
+<h3 id="最后目前遇到这些问题，在遇到在更新"><a href="#最后目前遇到这些问题，在遇到在更新" class="headerlink" title="最后目前遇到这些问题，在遇到在更新"></a>最后目前遇到这些问题，在遇到在更新</h3>
     
     </div>
     
@@ -464,7 +415,7 @@ public Intent setType(String type) {
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心"><span class="toc-number">1.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心-1"><span class="toc-number">2.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到这个任务-请务必静下心-2"><span class="toc-number">3.</span> <span class="toc-text">遇到这个任务 请务必静下心</span></a></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -561,7 +512,7 @@ public Intent setType(String type) {
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194').update('hashit_e82b560a9e5e0d045490fa6c837bebd4eb7990710fac8b59259d2822d135c1e2', function(){});
+    new Postv2('hashit_458d008ed77ea704d6219f5ff5cdfae1cdb2b61ffecc4bfa65a34677383843fe').update('hashit_0eb164d48291519d585511ff1226575f6ac3203d1e838c84a1cd57baf6072635', function(){});
   });
   
 </script>
@@ -578,42 +529,42 @@ public Intent setType(String type) {
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2016/05/08/Activity总结/', json.ip);
+    leanCloud.fetchIsThumbUp('/2018/10/14/项目合并/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
-      leanCloud.isThumbUp('/2016/05/08/Activity总结/', function(isThumbUp){
+      leanCloud.isThumbUp('/2018/10/14/项目合并/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2016/05/08/Activity总结/', json.ip);
+          leanCloud.removeThumbUpRecord('/2018/10/14/项目合并/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2016/05/08/Activity总结/', json.ip);
+          leanCloud.addThumbUpRecord('/2018/10/14/项目合并/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
-        leanCloud.getThumbUpCount('/2016/05/08/Activity总结/', function(count){
+        leanCloud.getThumbUpCount('/2018/10/14/项目合并/', function(count){
             console.log('thumb up count: ' + count)
             var el = document.getElementById('article-thumbup-count');
             if(el) el.innerHTML = count;
         });
       });
     });
-    leanCloud.addVisitRecord('/2016/05/08/Activity总结/', json.ip);
-    leanCloud.fetchCommentCount('/2016/05/08/Activity总结/');
-    leanCloud.fetchVisitCount('/2016/05/08/Activity总结/');
-    leanCloud.fetchThumbUpCount('/2016/05/08/Activity总结/');
-    leanCloud.getCommentCount('/2016/05/08/Activity总结/', function(count){
+    leanCloud.addVisitRecord('/2018/10/14/项目合并/', json.ip);
+    leanCloud.fetchCommentCount('/2018/10/14/项目合并/');
+    leanCloud.fetchVisitCount('/2018/10/14/项目合并/');
+    leanCloud.fetchThumbUpCount('/2018/10/14/项目合并/');
+    leanCloud.getCommentCount('/2018/10/14/项目合并/', function(count){
         var el = document.querySelector('#article-comment-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getVisitCount('/2016/05/08/Activity总结/', function(count){
+    leanCloud.getVisitCount('/2018/10/14/项目合并/', function(count){
         var el = document.querySelector('#article-visit-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getThumbUpCount('/2016/05/08/Activity总结/', function(count){
+    leanCloud.getThumbUpCount('/2018/10/14/项目合并/', function(count){
         var el = document.getElementById('article-thumbup-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.isThumbUp('/2016/05/08/Activity总结/', function(isThumbUp){
+    leanCloud.isThumbUp('/2018/10/14/项目合并/', function(isThumbUp){
         console.log('init thumb up:' + isThumbUp);
         if(isThumbUp){
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
