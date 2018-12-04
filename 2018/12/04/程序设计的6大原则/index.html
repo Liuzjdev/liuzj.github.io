@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>ART与Dalvik - Liuzj的博客</title>
+      <title>程序设计的6大原则 - Liuzj的博客</title>
   
 
   
@@ -206,14 +206,14 @@ crossorigin="anonymous"></script>
 
 
 
-<article class="article" id="/2018/06/08/art与dalvik区别/" data-name='ART与Dalvik' data-version="">
+<article class="article" id="/2018/12/04/程序设计的6大原则/" data-name='程序设计的6大原则' data-version="">
 
     <!-- Title -->
     <div class='article-header'>
          
          <h1 class='article-title'>
-            <a href="/2018/06/08/art与dalvik区别/">
-                ART与Dalvik
+            <a href="/2018/12/04/程序设计的6大原则/">
+                程序设计的6大原则
             </a>
         </h1>
         <!-- TODO: support nested categories,display them nicely -->
@@ -223,7 +223,7 @@ crossorigin="anonymous"></script>
     <!-- Date and Author -->
     <div class='article-meta'>
     <ul>
-            <li><i class='fa fa-calendar'></i> 2018-06-08</li>
+            <li><i class='fa fa-calendar'></i> 2018-12-04</li>
             
             <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
             <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
@@ -244,11 +244,11 @@ crossorigin="anonymous"></script>
 <div class="tags">
 	
 		
-			<label class='tag-1'><a href="/tags/ART/">Art</a></label>
+			<label class='tag-1'><a href="/tags/六大原则/">六大原则</a></label>
 		
 	
 		
-			<label class='tag-2'><a href="/tags/Dalvik/">Dalvik</a></label>
+			<label class='tag-2'><a href="/tags/设计模式/">设计模式</a></label>
 		
 	
 	</div>
@@ -307,7 +307,13 @@ crossorigin="anonymous"></script>
   <h3>Quick Read</h3>
 </div>
 <div class="card-text">
-  <p id='text-post-summary'>Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。ART: Ahead of Time Dalvik: Just in Time什么是Dalvik：Dalvik是Google公司自己设计用于Android平台的Java虚拟机。Dalvik虚拟机是Google等厂商合作开发的Android移动设备平台的核心组成部分之一，它可以支持已转换为.dex(即Dalvik...</p>
+  <p id='text-post-summary'>单一职责原则
+所谓职责是指类变化的原因。如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。
+一个类，只有一个引起它变化的原因。应该只有一个职责。每一个职责都是变化的一个轴线，如果一个类有一个以上的职责，这些职责就耦合在了一起。这会导致脆弱的设计。当一个职责发生变化时，可能会影响其它的职责。另外，多个职责耦合在一起，会影响复用性。例如：要实现逻辑和界面的分离。
+此原则的核心就是高内聚低耦合。
+
+里氏替换原则
+里氏替换原则(Liskov Substitution Principle...</p>
 </div>
         </div> -->
     </div>
@@ -333,19 +339,38 @@ crossorigin="anonymous"></script>
 
     </div>
     <div class='article-content'>
-    <h3 id="Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。"><a href="#Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。" class="headerlink" title="Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。"></a>Art上应用启动快，运行快，但是耗费更多存储空间，安装时间长，总的来说ART的功效就是”空间换时间”。</h3><h3 id="ART-Ahead-of-Time-Dalvik-Just-in-Time"><a href="#ART-Ahead-of-Time-Dalvik-Just-in-Time" class="headerlink" title="ART: Ahead of Time Dalvik: Just in Time"></a>ART: Ahead of Time Dalvik: Just in Time</h3><p><strong>什么是Dalvik</strong>：Dalvik是Google公司自己设计用于Android平台的Java虚拟机。Dalvik虚拟机是Google等厂商合作开发的Android移动设备平台的核心组成部分之一，它可以支持已转换为.dex(即Dalvik Executable)格式的Java应用程序的运行，.dex格式是专为Dalvik应用设计的一种压缩格式，适合内存和处理器速度有限的系统。Dalvik经过优化，允许在有限的内存中同时运行多个虚拟机的实例，并且每一个Dalvik应用作为独立的Linux进程执行。独立的进程可以防止在虚拟机崩溃的时候所有程序都被关闭。</p>
-<p><strong>什么是ART:</strong>Android操作系统已经成熟，Google的Android团队开始将注意力转向一些底层组件，其中之一是负责应用程序运行的Dalvik运行时。Google开发者已经花了两年时间开发更快执行效率更高更省电的替代ART运行时。ART代表Android Runtime,其处理应用程序执行的方式完全不同于Dalvik，Dalvik是依靠一个Just-In-Time(JIT)编译器去解释字节码。开发者编译后的应用代码需要通过一个解释器在用户的设备上运行，这一机制并不高效，但让应用能更容易在不同硬件和架构上运行。ART则完全改变了这套做法，在应用安装的时候就预编译字节码到机器语言，这一机制叫Ahead-Of-Time(AOT)编译。在移除解释代码这一过程后，应用程序执行将更有效率，启动更快。</p>
-<h3 id="ART优点："><a href="#ART优点：" class="headerlink" title="ART优点："></a>ART优点：</h3><ul>
-<li>系统性能的显著提升</li>
-<li>应用启动更快、运行更快、体验更流畅、触感反馈更及时</li>
-<li>更长的电池续航能力</li>
-<li>支持更低的硬件</li>
+    <h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><ul>
+<li>所谓职责是指类变化的原因。如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。</li>
+<li>一个类，只有一个引起它变化的原因。应该只有一个职责。每一个职责都是变化的一个轴线，如果一个类有一个以上的职责，这些职责就耦合在了一起。这会导致脆弱的设计。当一个职责发生变化时，可能会影响其它的职责。另外，多个职责耦合在一起，会影响复用性。例如：要实现逻辑和界面的分离。</li>
+<li>此原则的核心就是高内聚低耦合。</li>
 </ul>
-<h3 id="ART缺点："><a href="#ART缺点：" class="headerlink" title="ART缺点："></a>ART缺点：</h3><ul>
-<li>更大的存储空间占用，可能会增加10%-20%</li>
-<li>更长的应用安装时间</li>
+<h3 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h3><ul>
+<li>里氏替换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏替换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</li>
+<li>派生类（子类）对象可以在程式中代替其基类（超类）对象。</li>
 </ul>
-
+<h3 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h3><ul>
+<li>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。 简单的说就是要求对抽象进行编程，不要对实现进行编程，这样就降低了客户与实现模块间的耦合。</li>
+<li>高层次的模块不应该依赖于低层次的模块，两者都应该依赖于抽象接口。</li>
+<li>抽象接口不应该依赖于具体实现。而具体实现则应该依赖于抽象接口。</li>
+</ul>
+<h3 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h3><ul>
+<li>使用多个专门的接口比使用单一的总接口要好。</li>
+<li>一个类对另外一个类的依赖性应当是建立在最小的接口上的。</li>
+<li>一个接口代表一个角色，不应当将不同的角色都交给一个接口。没有关系的接口合并在一起，形成一个臃肿的大接口，这是对角色和接口的污染。</li>
+<li>“不应该强迫客户依赖于它们不用的方法。接口属于客户，不属于它所在的类层次结构。”这个说得很明白了，再通俗点说，不要强迫客户使用它们不用的方法，如果强迫用户使用它们不使用的方法，那么这些客户就会面临由于这些不使用的方法的改变所带来的改变。</li>
+</ul>
+<h3 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h3><ul>
+<li>迪米特法则可以简单说成：talk only to your immediate friends。 对于OOD来说，又被解释为下面几种方式：一个软件实体应当尽可能少的与其他实体发生相互作用。每一个软件单位对其他的单位都只有最少的知识，而且局限于那些与本单位密切相关的软件单位。</li>
+<li>迪米特法则的初衷在于降低类之间的耦合。由于每个类尽量减少对其他类的依赖，因此，很容易使得系统的功能模块功能独立，相互之间不存在（或很少有）依赖关系。</li>
+<li>迪米特法则不希望类之间建立直接的联系。如果真的有需要建立联系，也希望能通过它的友元类来转达。因此，应用迪米特法则有可能造成的一个后果就是：系统中存在大量的中介类，这些类之所以存在完全是为了传递类之间的相互调用关系——这在一定程度上增加了系统的复杂度。</li>
+<li>有兴趣可以研究一下设计模式的门面模式（Facade）和中介模式（Mediator），都是迪米特法则应用的例子。</li>
+</ul>
+<h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><ul>
+<li>开闭原则中“开”，是指对于组件功能的扩展是开放的，是允许对其进行功能扩展的。</li>
+<li>开闭原则中“闭”，是指对于原有代码的修改是封闭的，即修改原有的代码对外部的使用是透明的。</li>
+<li>在面向对象编程领域中，开闭原则规定“软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的”，这意味着一个实体是允许在不改变它的源代码的前提下变更它的行为。该特性在产品化的环境中是特别有价值的，在这种环境中，改变源代码需要代码审查，单元测试以及诸如此类的用以确保产品使用质量的过程。遵循这种原则的代码在扩展时并不发生改变，因此无需上述的过程。</li>
+</ul>
+<h4 id="以上内容均来自百度百科及维基百科，感谢观看"><a href="#以上内容均来自百度百科及维基百科，感谢观看" class="headerlink" title="以上内容均来自百度百科及维基百科，感谢观看"></a>以上内容均来自百度百科及维基百科，感谢观看</h4>
     
     </div>
     
@@ -494,7 +519,7 @@ crossorigin="anonymous"></script>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_a44a5354bdfe447fcee2d5ad5ca52783ff408a6ae5623a088a99bf88414ba45f').update('hashit_b94127069cba1de48919532aad9cb9a4a5002f67e33033c2d80cd48130b5ba1b', function(){});
+    new Postv2('hashit_7d664b8f290a9098a556118baa83a8be225078bb42fe5706cb944b98299ab593').update('hashit_2fee86ed934492ef5365bed81aefb920a06f0f304c32b92d7c1f6db4c8eac2d5', function(){});
   });
   
 </script>
@@ -511,42 +536,42 @@ crossorigin="anonymous"></script>
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2018/06/08/art与dalvik区别/', json.ip);
+    leanCloud.fetchIsThumbUp('/2018/12/04/程序设计的6大原则/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
-      leanCloud.isThumbUp('/2018/06/08/art与dalvik区别/', function(isThumbUp){
+      leanCloud.isThumbUp('/2018/12/04/程序设计的6大原则/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2018/06/08/art与dalvik区别/', json.ip);
+          leanCloud.removeThumbUpRecord('/2018/12/04/程序设计的6大原则/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2018/06/08/art与dalvik区别/', json.ip);
+          leanCloud.addThumbUpRecord('/2018/12/04/程序设计的6大原则/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
-        leanCloud.getThumbUpCount('/2018/06/08/art与dalvik区别/', function(count){
+        leanCloud.getThumbUpCount('/2018/12/04/程序设计的6大原则/', function(count){
             console.log('thumb up count: ' + count)
             var el = document.getElementById('article-thumbup-count');
             if(el) el.innerHTML = count;
         });
       });
     });
-    leanCloud.addVisitRecord('/2018/06/08/art与dalvik区别/', json.ip);
-    leanCloud.fetchCommentCount('/2018/06/08/art与dalvik区别/');
-    leanCloud.fetchVisitCount('/2018/06/08/art与dalvik区别/');
-    leanCloud.fetchThumbUpCount('/2018/06/08/art与dalvik区别/');
-    leanCloud.getCommentCount('/2018/06/08/art与dalvik区别/', function(count){
+    leanCloud.addVisitRecord('/2018/12/04/程序设计的6大原则/', json.ip);
+    leanCloud.fetchCommentCount('/2018/12/04/程序设计的6大原则/');
+    leanCloud.fetchVisitCount('/2018/12/04/程序设计的6大原则/');
+    leanCloud.fetchThumbUpCount('/2018/12/04/程序设计的6大原则/');
+    leanCloud.getCommentCount('/2018/12/04/程序设计的6大原则/', function(count){
         var el = document.querySelector('#article-comment-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getVisitCount('/2018/06/08/art与dalvik区别/', function(count){
+    leanCloud.getVisitCount('/2018/12/04/程序设计的6大原则/', function(count){
         var el = document.querySelector('#article-visit-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getThumbUpCount('/2018/06/08/art与dalvik区别/', function(count){
+    leanCloud.getThumbUpCount('/2018/12/04/程序设计的6大原则/', function(count){
         var el = document.getElementById('article-thumbup-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.isThumbUp('/2018/06/08/art与dalvik区别/', function(isThumbUp){
+    leanCloud.isThumbUp('/2018/12/04/程序设计的6大原则/', function(isThumbUp){
         console.log('init thumb up:' + isThumbUp);
         if(isThumbUp){
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
