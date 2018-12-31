@@ -177,7 +177,102 @@ crossorigin="anonymous"></script>
 
 
 
-<div class='Card Card-hover Card-index-1' id='hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba' data-name='Android Studio SVN使用手册' data-version=''>
+<div class='Card Card-hover Card-index-1' id='hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a' data-name='仿微信聊天列表之RecyclerView多布局' data-version=''>
+	
+		
+		
+	
+	<mark class='Card-badge' style='{visibility: "hidden"}'></mark>
+	<div class='Card-figure'>
+		
+			<a href="/2016/10/08/仿微信聊天列表之RecyclerView多布局/">
+		
+
+		 
+			<img class='grow' src="{{ url_for(generate_post_icon(item.title)) }}" alt="" onerror='this.src = "/images/jdenticon/7ac854a5517d5d762055a1800e5790c70f9419fee5503e26faa424e5cdf65ae7.png"'> 
+		
+		</a>
+	</div>
+	<div class="Card-body">
+
+			<div class='Card-title'>
+				<h2>
+				
+					<a href="/2016/10/08/仿微信聊天列表之RecyclerView多布局/">
+				
+				仿微信聊天列表之RecyclerView多布局</a></h2>
+			</div>
+			<div class='Card-excerpt'>
+				<p>
+				
+					<a href="/2016/10/08/仿微信聊天列表之RecyclerView多布局/">
+				
+				
+				
+				...
+				</a></p>
+				
+			</div>
+
+			
+			
+			<div class="Card-meta">
+				
+				<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/RecyclerView/">Recyclerview</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/聊天列表/">聊天列表</a></label>
+			
+		
+	
+	</div>
+</div>
+				
+				<ul>
+						<li>
+							<a href="/archives/">
+								<i class='fa fa-calendar'></i> 2016-10-08
+							</a>
+						</li>
+						
+						
+						<li>
+							<a href="/2016/10/08/仿微信聊天列表之RecyclerView多布局/#article-comment">
+								<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+							</a>
+						</li>
+						<li><i class="fa fa-eye"></i> <span class='card-visit-count'>0</span></li>
+						<li class='card-thumbup-container'><i class="far fa-thumbs-up"></i> <span class='card-thumbup-count'>0</span></li>
+						
+						
+				</ul>
+			</div>
+		</a>
+	</div>
+</div>
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='Card Card-hover Card-index-2' id='hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba' data-name='Android Studio SVN使用手册' data-version=''>
 	
 		
 		
@@ -274,7 +369,7 @@ crossorigin="anonymous"></script>
 
 
 
-<div class='Card Card-hover Card-index-2' id='hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194' data-name='Activity总结' data-version=''>
+<div class='Card Card-hover Card-index-3' id='hashit_dce903306aaed3dcfe47934df6e9593deeccf6a1d93039af6c5a3de5db130194' data-name='Activity总结' data-version=''>
 	
 		
 		
@@ -530,6 +625,14 @@ crossorigin="anonymous"></script>
           
           
           
+            var postBadge = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
             var postBadge = document.querySelector('#hashit_aaa37c4b88736481e0fc4d6caa29f338d09438d6520aafd6950f5d3f5080aeba mark.Card-badge');
             $(postBadge).fadeOut();
             
@@ -558,6 +661,36 @@ crossorigin="anonymous"></script>
       success: function(){
           LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', json.ip);
+          leanCloud.fetchCommentCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/');
+          leanCloud.fetchVisitCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/');
+          leanCloud.fetchThumbUpCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/');
+          leanCloud.getCommentCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(count){
+              var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(count){
+              var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(count){
+              var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2016/10/08/仿微信聊天列表之RecyclerView多布局/', function(isThumbUp){
+              var el = document.querySelector('#hashit_712e8a3b3784970516f2d6eb46e21ba846cfdae87e3261d364f55fcda798e09a .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           

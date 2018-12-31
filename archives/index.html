@@ -172,6 +172,62 @@ crossorigin="anonymous"></script>
 
 
 
+<div class='Card-archive' id='hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015' data-name='2018年终总结' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2018/12/31/2018年度总结/">
+			
+			2018年终总结</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/年终总结/">年终总结</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/目标/">目标</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2018-12-31
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2018/12/31/2018年度总结/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_7d664b8f290a9098a556118baa83a8be225078bb42fe5706cb944b98299ab593' data-name='程序设计的6大原则' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -1324,6 +1380,14 @@ crossorigin="anonymous"></script>
           
           
           
+            var postBadge = document.querySelector('#hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015 mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
             var postBadge = document.querySelector('#hashit_7d664b8f290a9098a556118baa83a8be225078bb42fe5706cb944b98299ab593 mark.Card-badge');
             $(postBadge).fadeOut();
             
@@ -1480,6 +1544,36 @@ crossorigin="anonymous"></script>
       success: function(){
           LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2018/12/31/2018年度总结/', json.ip);
+          leanCloud.fetchCommentCount('/2018/12/31/2018年度总结/');
+          leanCloud.fetchVisitCount('/2018/12/31/2018年度总结/');
+          leanCloud.fetchThumbUpCount('/2018/12/31/2018年度总结/');
+          leanCloud.getCommentCount('/2018/12/31/2018年度总结/', function(count){
+              var el = document.querySelector('#hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2018/12/31/2018年度总结/', function(count){
+              var el = document.querySelector('#hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2018/12/31/2018年度总结/', function(count){
+              var el = document.querySelector('#hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2018/12/31/2018年度总结/', function(isThumbUp){
+              var el = document.querySelector('#hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
