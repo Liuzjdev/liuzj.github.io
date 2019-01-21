@@ -1044,117 +1044,107 @@ html {
   justify-content: flex-start;
 }
 .tags label {
-  padding: 2px;
-  font-size: 0.8em;
+  padding: 5px;
+  font-size: 1em;
   margin: 3px;
+  font-weight: bold;
   border-radius: 5px;
   display: block;
 }
 .tags label a {
-  color: #666;
+  color: #fff;
 }
 .tag-1 {
-  border: 2px solid #b6d957;
-  background: #f0f7dd;
+  background: #b6d957;
 }
 .tag-1:hover {
-  background: #b6d957;
+  background: #c5e179;
 }
 .tag-1:hover a {
   color: #fff;
 }
 .tag-2 {
-  border: 2px solid #fac364;
-  background: #fef3e0;
+  background: #fac364;
 }
 .tag-2:hover {
-  background: #fac364;
+  background: #fbcf83;
 }
 .tag-2:hover a {
   color: #fff;
 }
 .tag-3 {
-  border: 2px solid #8cd3ff;
-  background: #e8f6ff;
+  background: #8cd3ff;
 }
 .tag-3:hover {
-  background: #8cd3ff;
+  background: #a3dcff;
 }
 .tag-3:hover a {
   color: #fff;
 }
 .tag-4 {
-  border: 2px solid #d998cb;
-  background: #f7eaf5;
+  background: #d998cb;
 }
 .tag-4:hover {
-  background: #d998cb;
+  background: #e1add5;
 }
 .tag-4:hover a {
   color: #fff;
 }
 .tag-5 {
-  border: 2px solid #f2d249;
-  background: #fcf6db;
+  background: #f2d249;
 }
 .tag-5:hover {
-  background: #f2d249;
+  background: #f5db6d;
 }
 .tag-5:hover a {
   color: #fff;
 }
 .tag-6 {
-  border: 2px solid #93b9c6;
-  background: #e9f1f4;
+  background: #93b9c6;
 }
 .tag-6:hover {
-  background: #93b9c6;
+  background: #a9c7d1;
 }
 .tag-6:hover a {
   color: #fff;
 }
 .tag-7 {
-  border: 2px solid #ccc5a8;
-  background: #f5f3ee;
+  background: #ccc5a8;
 }
 .tag-7:hover {
-  background: #ccc5a8;
+  background: #d6d1b9;
 }
 .tag-7:hover a {
   color: #fff;
 }
 .tag-8 {
-  border: 2px solid #52bacc;
-  background: #dcf1f5;
+  background: #52bacc;
 }
 .tag-8:hover {
-  background: #52bacc;
+  background: #75c8d6;
 }
 .tag-8:hover a {
   color: #fff;
 }
 .tag-9 {
-  border: 2px solid #dbdb46;
-  background: #f8f8da;
+  background: #dbdb46;
 }
 .tag-9:hover {
-  background: #dbdb46;
+  background: #e2e26b;
 }
 .tag-9:hover a {
   color: #fff;
 }
 .tag-10 {
-  border: 2px solid #98aafb;
-  background: #eaeefe;
+  background: #98aafb;
 }
 .tag-10:hover {
-  background: #98aafb;
+  background: #adbbfc;
 }
 .tag-10:hover a {
   color: #fff;
 }
 .tag-11 {
-  border: 2px solid;
   background: ;
 }
 .tag-11:hover {
@@ -1618,11 +1608,6 @@ html {
 .page a,
 .article a {
   text-decoration: none;
-}
-.page a:link,
-.article a:link,
-.page a:visited,
-.article a:visited {
   color: #444;
 }
 .page .article-content,
@@ -2186,9 +2171,7 @@ body {
   margin: 0 0.5em 0.5em 0.5em;
   display: block;
 }
-.Card .Card-body a:link,
-.Card .Card-body a:visited,
-.Card .Card-body a:hover {
+.Card .Card-body a {
   text-decoration: none;
   color: #444;
 }
@@ -2246,21 +2229,6 @@ body {
     margin-right: 1em;
   }
 }
-.Card .Card-body .Card-meta a {
-  color: #aaa;
-}
-.Card .Card-body .Card-meta a:hover {
-  color: #444;
-}
-.Card .Card-body .Card-meta ul {
-  padding: 0;
-  display: block;
-  margin-left: 0.3em;
-}
-.Card .Card-body .Card-meta li {
-  display: inline-block;
-  margin: 0 1em 0 0;
-}
 .Card .Card-figure {
   margin: 1.5em 1.5em 1.5em 0.5em;
 }
@@ -2296,6 +2264,36 @@ body {
 }
 .Card-hover:hover .Card-excerpt {
   display: block;
+}
+.Card-meta .card-calendar a:link,
+.Card-meta .card-calendar a:visited {
+  color: #759792;
+}
+.Card-meta .card-calendar a:hover {
+  color: #91aca8;
+}
+.Card-meta .card-comment a:link,
+.Card-meta .card-comment a:visited {
+  color: #aaa;
+}
+.Card-meta .card-comment a:hover {
+  color: #ffbb2d;
+}
+.Card-meta .card-visitor {
+  color: #aaa;
+}
+.Card-meta .card-thumbup-container {
+  color: #aaa;
+}
+.Card-meta ul {
+  padding: 0;
+  display: block;
+  margin-left: 0.3em;
+  font-size: 1.1em;
+}
+.Card-meta li {
+  display: inline-block;
+  margin: 0 1em 0 0;
 }
 .archive-container {
   margin: 0 auto;
@@ -2373,39 +2371,43 @@ body {
   }
 }
 .Card-archive .Card-meta {
-  margin-top: 0.5em;
+  margin-top: 4em;
   font-size: 0.8em;
   color: #aaa;
 }
-.Card-archive .Card-meta a:link {
+.Card-archive .Card-meta a {
   text-decoration: none;
-  color: #aaa;
-}
-.Card-archive .Card-meta a:visited {
-  color: #aaa;
-}
-.Card-archive .Card-meta a:hover {
-  color: #444;
 }
 .Card-archive .Card-meta .Card-tags {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 .Card-archive .Card-meta ul {
   padding: 0;
   display: block;
   clear: both;
   margin-left: 0.3em;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 .Card-archive .Card-meta li {
   display: inline-block;
   margin-left: 0.2em;
+}
+.Card-archive .Card-meta li a {
+  color: #aaa;
+}
+.Card-archive .Card-meta li a:visited {
+  color: #aaa;
+}
+.Card-archive .Card-meta li a:hover {
+  color: #444;
 }
 .Card-archive .Card-title {
   flex-grow: 1;
   padding-top: 0;
   font-weight: normal;
   margin: 0;
-  font-size: 1em;
+  font-size: 1.1em;
   margin-bottom: 2em;
 }
 .Card-archive .Card-title a:link,

@@ -23,9 +23,7 @@ for_breakpoint(mobile)
   margin: 0 0.5em 0.5em 0.5em;
   display: block;
 }
-.Card .Card-body a:link,
-.Card .Card-body a:visited,
-.Card .Card-body a:hover {
+.Card .Card-body a {
   text-decoration: none;
   color: #444;
 }
@@ -79,21 +77,6 @@ for_breakpoint(mobile)
 for_breakpoint(mobile)
   display: block;
 }
-.Card .Card-body .Card-meta a {
-  color: #aaa;
-}
-.Card .Card-body .Card-meta a:hover {
-  color: #444;
-}
-.Card .Card-body .Card-meta ul {
-  padding: 0;
-  display: block;
-  margin-left: 0.3em;
-}
-.Card .Card-body .Card-meta li {
-  display: inline-block;
-  margin: 0 1em 0 0;
-}
 .Card .Card-figure {
   margin: 1.5em 1.5em 1.5em 0.5em;
 for_breakpoint(mobile)
@@ -121,4 +104,34 @@ for_breakpoint(tablet)
 }
 .Card-hover:hover .Card-excerpt {
   display: block;
+}
+.Card-meta .card-calendar a:link,
+.Card-meta .card-calendar a:visited {
+  color: #759792;
+}
+.Card-meta .card-calendar a:hover {
+  color: #91aca8;
+}
+.Card-meta .card-comment a:link,
+.Card-meta .card-comment a:visited {
+  color: #aaa;
+}
+.Card-meta .card-comment a:hover {
+  color: #ffbb2d;
+}
+.Card-meta .card-visitor {
+  color: #aaa;
+}
+.Card-meta .card-thumbup-container {
+  color: #aaa;
+}
+.Card-meta ul {
+  padding: 0;
+  display: block;
+  margin-left: 0.3em;
+  font-size: 1.1em;
+}
+.Card-meta li {
+  display: inline-block;
+  margin: 0 1em 0 0;
 }

@@ -31,11 +31,6 @@ Topography of post for scheme taurus
 .page a,
 .article a {
   text-decoration: none;
-}
-.page a:link,
-.article a:link,
-.page a:visited,
-.article a:visited {
   color: #444;
 }
 .page .article-content,

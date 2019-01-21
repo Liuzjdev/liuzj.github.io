@@ -5,117 +5,107 @@
   justify-content: flex-start;
 }
 .tags label {
-  padding: 2px;
-  font-size: 0.8em;
+  padding: 5px;
+  font-size: 1em;
   margin: 3px;
+  font-weight: bold;
   border-radius: 5px;
   display: block;
 }
 .tags label a {
-  color: #666;
+  color: #fff;
 }
 .tag-1 {
-  border: 2px solid #b6d957;
-  background: #f0f7dd;
+  background: #b6d957;
 }
 .tag-1:hover {
-  background: #b6d957;
+  background: #c5e179;
 }
 .tag-1:hover a {
   color: #fff;
 }
 .tag-2 {
-  border: 2px solid #fac364;
-  background: #fef3e0;
+  background: #fac364;
 }
 .tag-2:hover {
-  background: #fac364;
+  background: #fbcf83;
 }
 .tag-2:hover a {
   color: #fff;
 }
 .tag-3 {
-  border: 2px solid #8cd3ff;
-  background: #e8f6ff;
+  background: #8cd3ff;
 }
 .tag-3:hover {
-  background: #8cd3ff;
+  background: #a3dcff;
 }
 .tag-3:hover a {
   color: #fff;
 }
 .tag-4 {
-  border: 2px solid #d998cb;
-  background: #f7eaf5;
+  background: #d998cb;
 }
 .tag-4:hover {
-  background: #d998cb;
+  background: #e1add5;
 }
 .tag-4:hover a {
   color: #fff;
 }
 .tag-5 {
-  border: 2px solid #f2d249;
-  background: #fcf6db;
+  background: #f2d249;
 }
 .tag-5:hover {
-  background: #f2d249;
+  background: #f5db6d;
 }
 .tag-5:hover a {
   color: #fff;
 }
 .tag-6 {
-  border: 2px solid #93b9c6;
-  background: #e9f1f4;
+  background: #93b9c6;
 }
 .tag-6:hover {
-  background: #93b9c6;
+  background: #a9c7d1;
 }
 .tag-6:hover a {
   color: #fff;
 }
 .tag-7 {
-  border: 2px solid #ccc5a8;
-  background: #f5f3ee;
+  background: #ccc5a8;
 }
 .tag-7:hover {
-  background: #ccc5a8;
+  background: #d6d1b9;
 }
 .tag-7:hover a {
   color: #fff;
 }
 .tag-8 {
-  border: 2px solid #52bacc;
-  background: #dcf1f5;
+  background: #52bacc;
 }
 .tag-8:hover {
-  background: #52bacc;
+  background: #75c8d6;
 }
 .tag-8:hover a {
   color: #fff;
 }
 .tag-9 {
-  border: 2px solid #dbdb46;
-  background: #f8f8da;
+  background: #dbdb46;
 }
 .tag-9:hover {
-  background: #dbdb46;
+  background: #e2e26b;
 }
 .tag-9:hover a {
   color: #fff;
 }
 .tag-10 {
-  border: 2px solid #98aafb;
-  background: #eaeefe;
+  background: #98aafb;
 }
 .tag-10:hover {
-  background: #98aafb;
+  background: #adbbfc;
 }
 .tag-10:hover a {
   color: #fff;
 }
 .tag-11 {
-  border: 2px solid;
   background: ;
 }
 .tag-11:hover {
