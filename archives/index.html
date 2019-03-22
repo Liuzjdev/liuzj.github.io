@@ -198,6 +198,62 @@ crossorigin="anonymous"></script>
 
 
 
+<div class='Card-archive' id='hashit_e2a8b641934af2e8271e5dd68fca443f9f60437df3ae936bbc77928d01d93af3' data-name='面试汇总' data-version=''>
+	<mark class='Card-badge'></mark>
+	<div class="Card-body">
+		<h3 class='Card-title'>
+			
+				<a href="/2019/03/03/Android面试题集/">
+			
+			面试汇总</a>
+		</h3>
+		<div class="Card-meta">
+			<div class='Card-tags'>
+<div class="tags">
+	
+		
+			
+				<label class='tag-1'><a href="/tags/基础/">基础</a></label>
+			
+		
+	
+		
+			
+				<label class='tag-2'><a href="/tags/面试/">面试</a></label>
+			
+		
+	
+	</div>
+</div>
+			<ul>
+					<li>
+						<a href="/archives/">
+							<i class='fa fa-calendar'></i> 2019-03-03
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="/2019/03/03/Android面试题集/#article-comment">
+							<i class='fa fa-comments'></i> <span class='card-comment-count'>0</span>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-eye"></i> <span class='card-visit-count'>0</span>
+					</li>
+					
+					
+			</ul>
+		</div>
+	</div>
+</div>
+
+	
+		
+
+
+
+
 <div class='Card-archive' id='hashit_91b6fdfa5acb20a6bd3bada86fa580bc8147d44fc9aa718bef44eabb5421d85e' data-name='做饭日记' data-version=''>
 	<mark class='Card-badge'></mark>
 	<div class="Card-body">
@@ -1553,6 +1609,14 @@ crossorigin="anonymous"></script>
           
           
           
+            var postBadge = document.querySelector('#hashit_e2a8b641934af2e8271e5dd68fca443f9f60437df3ae936bbc77928d01d93af3 mark.Card-badge');
+            $(postBadge).fadeOut();
+            
+          
+        
+          
+          
+          
             var postBadge = document.querySelector('#hashit_91b6fdfa5acb20a6bd3bada86fa580bc8147d44fc9aa718bef44eabb5421d85e mark.Card-badge');
             $(postBadge).fadeOut();
             
@@ -1733,6 +1797,36 @@ crossorigin="anonymous"></script>
       success: function(){
           LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
           var leanCloud = LeanCloud.getInstance();
+        
+          
+          
+          // start caching post visit and comment counts
+          leanCloud.fetchIsThumbUp('/2019/03/03/Android面试题集/', json.ip);
+          leanCloud.fetchCommentCount('/2019/03/03/Android面试题集/');
+          leanCloud.fetchVisitCount('/2019/03/03/Android面试题集/');
+          leanCloud.fetchThumbUpCount('/2019/03/03/Android面试题集/');
+          leanCloud.getCommentCount('/2019/03/03/Android面试题集/', function(count){
+              var el = document.querySelector('#hashit_e2a8b641934af2e8271e5dd68fca443f9f60437df3ae936bbc77928d01d93af3 .card-comment-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getVisitCount('/2019/03/03/Android面试题集/', function(count){
+              var el = document.querySelector('#hashit_e2a8b641934af2e8271e5dd68fca443f9f60437df3ae936bbc77928d01d93af3 .card-visit-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.getThumbUpCount('/2019/03/03/Android面试题集/', function(count){
+              var el = document.querySelector('#hashit_e2a8b641934af2e8271e5dd68fca443f9f60437df3ae936bbc77928d01d93af3 .card-thumbup-count');
+              if(el) el.innerHTML = count;
+          });
+          leanCloud.isThumbUp('/2019/03/03/Android面试题集/', function(isThumbUp){
+              var el = document.querySelector('#hashit_e2a8b641934af2e8271e5dd68fca443f9f60437df3ae936bbc77928d01d93af3 .card-thumbup-container i');
+              if(el){
+                if(isThumbUp){
+                  el.className = 'fas fa-thumbs-up';
+                }else{
+                  el.className = 'far fa-thumbs-up';
+                }
+              }
+          });
         
           
           
