@@ -10,7 +10,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   
-      <title>二零一八年终总结 - Liuzj的博客</title>
+      <title>避免Android应用冷启动问题（译） - Liuzj的博客</title>
   
 
   
@@ -129,7 +129,7 @@ crossorigin="anonymous"></script>
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说两句"><span class="toc-number">1.</span> <span class="toc-text">说两句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小感慨"><span class="toc-number">2.</span> <span class="toc-text">小感慨</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用的冷启动问题"><span class="toc-number">1.</span> <span class="toc-text">应用的冷启动问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你的新帮手，windowBackground"><span class="toc-number">2.</span> <span class="toc-text">你的新帮手，windowBackground</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义启动页"><span class="toc-number">3.</span> <span class="toc-text">自定义启动页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-placeholder"><span class="toc-number">4.</span> <span class="toc-text">自定义 placeholder</span></a></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -232,14 +232,14 @@ crossorigin="anonymous"></script>
 
 
 
-<article class="article" id="/2018/12/31/2018年度总结/" data-name='二零一八年终总结' data-version="">
+<article class="article" id="/2018/09/29/避免应用冷启动/" data-name='避免Android应用冷启动问题（译）' data-version="">
 
     <!-- Title -->
     <div class='article-header'>
          
          <h1 class='article-title'>
-            <a href="/2018/12/31/2018年度总结/">
-                二零一八年终总结
+            <a href="/2018/09/29/避免应用冷启动/">
+                避免Android应用冷启动问题（译）
             </a>
         </h1>
         <!-- TODO: support nested categories,display them nicely -->
@@ -249,7 +249,7 @@ crossorigin="anonymous"></script>
     <!-- Date and Author -->
     <div class='article-meta'>
     <ul>
-            <li><i class='fa fa-calendar'></i> 2018-12-31</li>
+            <li><i class='fa fa-calendar'></i> 2018-09-29</li>
             
             <li class='comment-button'><a href='#article-comment'><i class='fa fa-comments'></i> <span id='article-comment-count'>0</span></a></li>
             <li><i class="fa fa-eye"></i> <span id='article-visit-count'>0</span></li>
@@ -270,11 +270,11 @@ crossorigin="anonymous"></script>
 <div class="tags">
 	
 		
-			<label class='tag-1'><a href="/tags/年终总结/">年终总结</a></label>
+			<label class='tag-1'><a href="/tags/Android/">Android</a></label>
 		
 	
 		
-			<label class='tag-2'><a href="/tags/目标/">目标</a></label>
+			<label class='tag-2'><a href="/tags/优化/">优化</a></label>
 		
 	
 	</div>
@@ -333,7 +333,12 @@ crossorigin="anonymous"></script>
   <h3>Quick Read</h3>
 </div>
 <div class="card-text">
-  <p id='text-post-summary'>...</p>
+  <p id='text-post-summary'>原文链接 : Avoiding cold starts on Android
+原文作者 : Saúl Molinero
+
+
+在过去的几周里，Android 开发者社区有人在讨论 Android 应用的冷启动问题（即启动应用时有一段时间屏幕不显示内容，背景全为白/黑），在本篇博文中，我将解释解决这个问题是否必要，以及如何解决它以使用户得到最好的使用体验。
+应用的冷启动问题Colt McAnlis（Google 的一名工程师）再次开启了一个讨论帖来讨论有关 Splash/Launch 启动页面的正确用法，讨论的主题和 Cyril Mottier...</p>
 </div>
         </div> -->
     </div>
@@ -351,7 +356,7 @@ crossorigin="anonymous"></script>
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说两句"><span class="toc-number">1.</span> <span class="toc-text">说两句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小感慨"><span class="toc-number">2.</span> <span class="toc-text">小感慨</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用的冷启动问题"><span class="toc-number">1.</span> <span class="toc-text">应用的冷启动问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你的新帮手，windowBackground"><span class="toc-number">2.</span> <span class="toc-text">你的新帮手，windowBackground</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义启动页"><span class="toc-number">3.</span> <span class="toc-text">自定义启动页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-placeholder"><span class="toc-number">4.</span> <span class="toc-text">自定义 placeholder</span></a></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -359,27 +364,133 @@ crossorigin="anonymous"></script>
 
     </div>
     <div class='article-content'>
-    <h2 id="说两句"><a href="#说两句" class="headerlink" title="说两句"></a>说两句</h2><p>总想说两句，又不知从何说起。都赖自己读书少，所以给自己立几个flag，好让明年有个奔头</p>
-<h3 id="目标一"><a href="#目标一" class="headerlink" title="目标一"></a>目标一</h3><p><strong><em>把自己技术提升个level，既然不知道什么适合自己，那就把现在手头得工作做好。</em></strong></p>
+    <blockquote>
 <ul>
-<li>基础</li>
-<li>算法</li>
-<li>框架及源码</li>
-<li>争取自己搞个开源项目</li>
-<li>抽时间学学python，用python搭个后台玩玩</li>
+<li>原文链接 : <a href="http://saulmm.github.io/avoding-android-cold-starts" target="_blank" rel="noopener">Avoiding cold starts on Android</a></li>
+<li>原文作者 : <a href="http://saulmm.github.io/" target="_blank" rel="noopener">Saúl Molinero</a></li>
 </ul>
-<h3 id="目标二"><a href="#目标二" class="headerlink" title="目标二"></a>目标二</h3><p><strong><em>尽量常回家看看，多陪陪家人</em></strong></p>
-<h3 id="目标三"><a href="#目标三" class="headerlink" title="目标三"></a>目标三</h3><p><strong><em>带老爸老妈做个体检，毕竟健康是第一位</em></strong></p>
-<h3 id="目标四"><a href="#目标四" class="headerlink" title="目标四"></a>目标四</h3><p><strong><em>给老爸老妈买个新的电子产品，感受感受科技得强大</em></strong></p>
-<h3 id="目标五"><a href="#目标五" class="headerlink" title="目标五"></a>目标五</h3><p><strong><em>多读书，跟别人交流得时候总是有很多东西想说，却不知该怎么表达，才后悔自己读书少</em></strong></p>
-<p>虽说现在还不知道看啥，但先给自己定个小目标，最少明年要读五本书。看后写观后感</p>
-<h3 id="目标六"><a href="#目标六" class="headerlink" title="目标六"></a>目标六</h3><p><strong><em>坚持锻炼，有个好体格，才有资本谈别的</em></strong></p>
-<h2 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h2><p>算了，也不知道说啥了就这样吧，憋一肚子话不知道怎么表达就这样憋死我吧。</p>
-<p><em>再见2018，加油2019.让自己变得更强，变得更优秀</em><br><br></p>
-<div align="right"><br>2018年/12月31日/22点17分&emsp;<br><br><br></div>
+</blockquote>
+<p>在过去的几周里，Android 开发者社区有人在讨论 Android 应用的冷启动问题（即启动应用时有一段时间屏幕不显示内容，背景全为白/黑），在本篇博文中，我将解释解决这个问题是否必要，以及如何解决它以使用户得到最好的使用体验。</p>
+<h2 id="应用的冷启动问题"><a href="#应用的冷启动问题" class="headerlink" title="应用的冷启动问题"></a>应用的冷启动问题</h2><p>Colt McAnlis（Google 的一名工程师）再次开启了一个讨论帖来讨论有关 Splash/Launch 启动页面的正确用法，讨论的主题和 Cyril Mottier 之前开启的讨论相同，大体是说为什么我们在开发的时候应该避免使用 Splash 启动页。讨论的冲突点在于一部分人认为 Splash 启动页破坏了用户体验，增加了应用的体积等等…</p>
+<p>在我看来，用户在使用应用时，应用的内容应该尽可能快呈现给用户，但当用户启动某个应用，Android 内核总会创建一个进程，使得屏幕不可避免地显示黑/白（取决于应用的 theme 或入口 Activity 的 theme）。</p>
+<p>应用本身越复杂，或应用使用的 Application 类被重写过以需要完成更多的任务（如初始化数据分析，错误报告，等等…）时，这段时间会变得更长。</p>
+<p><img src="https://github.com/saulmm/OnboardingSample/blob/master/art/airbnb.gif?raw=true" alt=""></p>
+<p>Airbnb 在初始化时就会像上图那样留白</p>
+<p>对用户来说，这样的界面显然不是他们想要看到的。假如应用的加载时间很长，我们可以通过 placeholder 用一些内容去填充它，或者显示 Logo 以加强品牌印象。</p>
+<p><img src="https://github.com/saulmm/OnboardingSample/blob/master/art/aliexpress.gif?raw=true" alt=""></p>
+<p>AliExpress 在初始化时会显示其 Logo</p>
+<h2 id="你的新帮手，windowBackground"><a href="#你的新帮手，windowBackground" class="headerlink" title="你的新帮手，windowBackground"></a>你的新帮手，windowBackground</h2><p>就像我们之前讨论的，在进程处于加载状态时，WindowManager 显示的 Window 由应用的 theme 决定其显示内容，准确地说，是由 android:windowBackground 的值决定的。就像 <a href="https://plus.google.com/+AndroidDevelopers/posts/Z1Wwainpjhd" target="_blank" rel="noopener">Ian Lake</a> 的这篇博文所提到的，如果我们为该属性设置 <layer-list> 元素，该元素使用 MainActivity 的背景颜色，并在屏幕中间显示一个 Pizza 图像，可以实现下面的效果：</layer-list></p>
+<p><img src="https://github.com/saulmm/OnboardingSample/blob/master/art/simple.gif?raw=true" alt=""></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;layer-list
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:opacity=&quot;opaque&quot;&gt;
 
+    &lt;item android:drawable=&quot;@color/grey&quot;/&gt;
+    &lt;item&gt;
+        &lt;bitmap
+            android:gravity=&quot;center&quot;
+            android:src=&quot;@drawable/img_pizza&quot;/&gt;
+    &lt;/item&gt;
+&lt;/layer-list&gt;
+</code></pre><p>这里要将 <layer-list> 的 android:opacity 属性设置为 opaque，使 <layer-list> 为不透明的，要不然会出现一些问题，请读者记住这一点。此外，Activity 的布局背景应该填充了某个颜色，不然的话 <layer-list> 会留在你的 Activity 中。</layer-list></layer-list></layer-list></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    android:background=&quot;@color/grey&quot;
+    &gt;
 
+    &lt;android.support.v7.widget.Toolbar
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;?attr/actionBarSize&quot;
+        android:background=&quot;?colorPrimary&quot;
+        android:elevation=&quot;4dp&quot;
+        /&gt;
+&lt;/LinearLayout&gt;
+</code></pre><h2 id="自定义启动页"><a href="#自定义启动页" class="headerlink" title="自定义启动页"></a>自定义启动页</h2><p>利用 windowBackground 属性可以给用户更好的体验。如果应用很复杂，那么可以显示一个独特的 Activity 来完成登录操作或进行选择操作，利用图片和动画可以实现下面这个酷炫的效果：</p>
+<p><img src="https://github.com/saulmm/OnboardingSample/blob/master/art/center.gif?raw=true" alt=""></p>
+<p>该动画在竖直方向上移动 ImageView，该 ImageView 包含了 <layer-list> 元素。</layer-list></p>
+<pre><code>ViewCompat.animate(logoImageView)
+    .translationY(-250)
+    .setStartDelay(STARTUP_DELAY)
+    .setDuration(ANIM_ITEM_DURATION).setInterpolator(
+         new DecelerateInterpolator(1.2f)).start();
+</code></pre><p>从效果图可以看到，ImageView 要稍微高于屏幕的中心点，实际位置会受 SystemBar 的大小影响，在这里我为它设置了 12dp 的顶部间距，差不多是状态栏高度的一半。</p>
+<pre><code>&lt;ImageView
+    android:id=&quot;@+id/img_logo&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;center&quot;
+    android:layout_marginTop=&quot;12dp&quot;
+    android:src=&quot;@drawable/img_face&quot;
+    tools:visibility=&quot;gone&quot;
+    /&gt;
+</code></pre><h2 id="自定义-placeholder"><a href="#自定义-placeholder" class="headerlink" title="自定义 placeholder"></a>自定义 placeholder</h2><p>使用 <layer-list> 可以创建 placeholder 以显示 MainActivity 的内容，例如，可以通过 <layer-list> 模仿 Toolbar。</layer-list></layer-list></p>
+<p><img src="https://github.com/saulmm/OnboardingSample/blob/master/art/toolbar_placeholder.png?raw=true" alt=""></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;layer-list
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:opacity=&quot;opaque&quot;
+    &gt;
+    &lt;item&gt;
+        &lt;shape&gt;
+            &lt;solid android:color=&quot;@color/grey&quot;/&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
 
+    &lt;item
+        android:height=&quot;180dp&quot;
+        android:gravity=&quot;top&quot;&gt;
+        &lt;shape android:shape=&quot;rectangle&quot;&gt;
+            &lt;solid android:color=&quot;?colorPrimary&quot;/&gt;
+        &lt;/shape&gt;
+    &lt;/item&gt;
+&lt;/layer-list&gt;
+</code></pre><p>其中，第二个 <item> 模仿真正要被显示到屏幕上的 Toolbar，甚至我们可以将它的高度设置为 Toolbar 的高度（宽度小于状态栏一点点），应用一些酷炫的动画到 Toolbar，给用户更好的体验，效果图：</item></p>
+<p><img src="https://github.com/saulmm/OnboardingSample/blob/master/art/placeholder.gif?raw=true" alt=""></p>
+<pre><code>private void collapseToolbar() {
+    int toolBarHeight;
+    TypedValue tv = new TypedValue();
+    getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+    toolBarHeight = TypedValue.complexToDimensionPixelSize(
+        tv.data, getResources().getDisplayMetrics());
+
+    ValueAnimator valueHeightAnimator = ValueAnimator
+        .ofInt(mContentViewHeight, toolBarHeight);
+
+    valueHeightAnimator.addUpdateListener(
+        new ValueAnimator.AnimatorUpdateListener() {
+
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            ViewGroup.LayoutParams lp = mToolbar.getLayoutParams();
+            lp.height = (Integer) animation.getAnimatedValue();
+            mToolbar.setLayoutParams(lp);
+        }
+    });
+
+    valueHeightAnimator.start();
+    valueHeightAnimator.addListener(
+        new AnimatorListenerAdapter() {
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            super.onAnimationEnd(animation);
+
+            // Fire recycler animator
+            mAdapter.addAll(ModelItem.getFakeItems());
+
+            // Animate fab
+            ViewCompat.animate(mFab).setStartDelay(600)
+                .setDuration(400).scaleY(1).scaleX(1).start();
+
+        }
+    });
+}
+</code></pre>
     
     </div>
     
@@ -438,7 +549,7 @@ crossorigin="anonymous"></script>
 
 <div class='toc-container'>
 <i class="far fa-times-circle" id='toc-close' onclick='closeTOC(event);' ontouchstart='closeTOC(event);'></i>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说两句"><span class="toc-number">1.</span> <span class="toc-text">说两句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小感慨"><span class="toc-number">2.</span> <span class="toc-text">小感慨</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用的冷启动问题"><span class="toc-number">1.</span> <span class="toc-text">应用的冷启动问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你的新帮手，windowBackground"><span class="toc-number">2.</span> <span class="toc-text">你的新帮手，windowBackground</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义启动页"><span class="toc-number">3.</span> <span class="toc-text">自定义启动页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-placeholder"><span class="toc-number">4.</span> <span class="toc-text">自定义 placeholder</span></a></li></ol>
 </div>
 <div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
     <img src="/images/icons/blue-shadow/toc.svg" alt="">
@@ -547,7 +658,7 @@ crossorigin="anonymous"></script>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_25c2cdeac37eb3086ad9b7193ff4d7561b577dae06d4d30cd4b6ff165682a015').update('hashit_3c9c8d682779a2b49d1df70ca499f9a648fe3858951e9b93c90b4d631afe5f02', function(){});
+    new Postv2('hashit_8343cf1891d1a1ee7a3aeb771f02a6b2bfe88d90c0196974b53befe329b72d18').update('hashit_a52548e4a3831e999572c6824f925ddce96310b75cf2daf89f276c7c525ee6ca', function(){});
   });
   
 </script>
@@ -564,42 +675,42 @@ crossorigin="anonymous"></script>
     
     LeanCloud.init('tBcysyoj9731OUF5uYiySi1A-gzGzoHsz', '9Y8T0FcYUEurAkpRRfii3G2V');
     var leanCloud = LeanCloud.getInstance();
-    leanCloud.fetchIsThumbUp('/2018/12/31/2018年度总结/', json.ip);
+    leanCloud.fetchIsThumbUp('/2018/09/29/避免应用冷启动/', json.ip);
     document.getElementById('thumb-up-button').addEventListener('click', function(e){
-      leanCloud.isThumbUp('/2018/12/31/2018年度总结/', function(isThumbUp){
+      leanCloud.isThumbUp('/2018/09/29/避免应用冷启动/', function(isThumbUp){
         console.log('is thumb up:' + isThumbUp);
         if(isThumbUp){
-          leanCloud.removeThumbUpRecord('/2018/12/31/2018年度总结/', json.ip);
+          leanCloud.removeThumbUpRecord('/2018/09/29/避免应用冷启动/', json.ip);
           document.getElementById('thumb-up-icon').className = "far fa-thumbs-up fa-lg";
           
         }else{
-          leanCloud.addThumbUpRecord('/2018/12/31/2018年度总结/', json.ip);
+          leanCloud.addThumbUpRecord('/2018/09/29/避免应用冷启动/', json.ip);
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
         }
-        leanCloud.getThumbUpCount('/2018/12/31/2018年度总结/', function(count){
+        leanCloud.getThumbUpCount('/2018/09/29/避免应用冷启动/', function(count){
             console.log('thumb up count: ' + count)
             var el = document.getElementById('article-thumbup-count');
             if(el) el.innerHTML = count;
         });
       });
     });
-    leanCloud.addVisitRecord('/2018/12/31/2018年度总结/', json.ip);
-    leanCloud.fetchCommentCount('/2018/12/31/2018年度总结/');
-    leanCloud.fetchVisitCount('/2018/12/31/2018年度总结/');
-    leanCloud.fetchThumbUpCount('/2018/12/31/2018年度总结/');
-    leanCloud.getCommentCount('/2018/12/31/2018年度总结/', function(count){
+    leanCloud.addVisitRecord('/2018/09/29/避免应用冷启动/', json.ip);
+    leanCloud.fetchCommentCount('/2018/09/29/避免应用冷启动/');
+    leanCloud.fetchVisitCount('/2018/09/29/避免应用冷启动/');
+    leanCloud.fetchThumbUpCount('/2018/09/29/避免应用冷启动/');
+    leanCloud.getCommentCount('/2018/09/29/避免应用冷启动/', function(count){
         var el = document.querySelector('#article-comment-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getVisitCount('/2018/12/31/2018年度总结/', function(count){
+    leanCloud.getVisitCount('/2018/09/29/避免应用冷启动/', function(count){
         var el = document.querySelector('#article-visit-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.getThumbUpCount('/2018/12/31/2018年度总结/', function(count){
+    leanCloud.getThumbUpCount('/2018/09/29/避免应用冷启动/', function(count){
         var el = document.getElementById('article-thumbup-count');
         if(el) el.innerHTML = count;
     });
-    leanCloud.isThumbUp('/2018/12/31/2018年度总结/', function(isThumbUp){
+    leanCloud.isThumbUp('/2018/09/29/避免应用冷启动/', function(isThumbUp){
         console.log('init thumb up:' + isThumbUp);
         if(isThumbUp){
           document.getElementById('thumb-up-icon').className = "fas fa-thumbs-up fa-lg";
