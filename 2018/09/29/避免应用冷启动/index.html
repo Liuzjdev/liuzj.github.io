@@ -337,8 +337,8 @@ crossorigin="anonymous"></script>
 原文作者 : Saúl Molinero
 
 
-在过去的几周里，Android 开发者社区有人在讨论 Android 应用的冷启动问题（即启动应用时有一段时间屏幕不显示内容，背景全为白/黑），在本篇博文中，我将解释解决这个问题是否必要，以及如何解决它以使用户得到最好的使用体验。
-应用的冷启动问题Colt McAnlis（Google 的一名工程师）再次开启了一个讨论帖来讨论有关 Splash/Launch 启动页面的正确用法，讨论的主题和 Cyril Mottier...</p>
+在过去的几周里，Android 开发者社区有人在讨论 Android 应用的冷启动问题（即启动应用时有一段时间屏幕不显示内容，背景全为白/黑），在本篇博文中，我将解释解决这个问题是否必要，以及如何解决它以使用户得到最好的使用体验。本篇博文涉及的代码可以在 Github 看到。
+应用的冷启动问题Colt McAnlis（Google 的一名工程师）再次开启了一个讨论帖来讨论有关 Splash/Launch 启动页面的正确用法，讨论的主题和 Cyril...</p>
 </div>
         </div> -->
     </div>
@@ -370,7 +370,7 @@ crossorigin="anonymous"></script>
 <li>原文作者 : <a href="http://saulmm.github.io/" target="_blank" rel="noopener">Saúl Molinero</a></li>
 </ul>
 </blockquote>
-<p>在过去的几周里，Android 开发者社区有人在讨论 Android 应用的冷启动问题（即启动应用时有一段时间屏幕不显示内容，背景全为白/黑），在本篇博文中，我将解释解决这个问题是否必要，以及如何解决它以使用户得到最好的使用体验。</p>
+<p>在过去的几周里，Android 开发者社区有人在讨论 Android 应用的冷启动问题（即启动应用时有一段时间屏幕不显示内容，背景全为白/黑），在本篇博文中，我将解释解决这个问题是否必要，以及如何解决它以使用户得到最好的使用体验。<br>本篇博文涉及的代码可以在 <a href="https://github.com/saulmm/onboarding-examples-android" target="_blank" rel="noopener">Github</a><br> 看到。</p>
 <h2 id="应用的冷启动问题"><a href="#应用的冷启动问题" class="headerlink" title="应用的冷启动问题"></a>应用的冷启动问题</h2><p>Colt McAnlis（Google 的一名工程师）再次开启了一个讨论帖来讨论有关 Splash/Launch 启动页面的正确用法，讨论的主题和 Cyril Mottier 之前开启的讨论相同，大体是说为什么我们在开发的时候应该避免使用 Splash 启动页。讨论的冲突点在于一部分人认为 Splash 启动页破坏了用户体验，增加了应用的体积等等…</p>
 <p>在我看来，用户在使用应用时，应用的内容应该尽可能快呈现给用户，但当用户启动某个应用，Android 内核总会创建一个进程，使得屏幕不可避免地显示黑/白（取决于应用的 theme 或入口 Activity 的 theme）。</p>
 <p>应用本身越复杂，或应用使用的 Application 类被重写过以需要完成更多的任务（如初始化数据分析，错误报告，等等…）时，这段时间会变得更长。</p>
@@ -658,7 +658,7 @@ crossorigin="anonymous"></script>
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_8343cf1891d1a1ee7a3aeb771f02a6b2bfe88d90c0196974b53befe329b72d18').update('hashit_a52548e4a3831e999572c6824f925ddce96310b75cf2daf89f276c7c525ee6ca', function(){});
+    new Postv2('hashit_8343cf1891d1a1ee7a3aeb771f02a6b2bfe88d90c0196974b53befe329b72d18').update('hashit_d5fac48e19c13aa7eda4ceb41c99cf13e701f20961b71fc02944de25d3ca9c9a', function(){});
   });
   
 </script>
